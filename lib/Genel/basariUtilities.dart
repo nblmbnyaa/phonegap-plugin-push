@@ -144,7 +144,6 @@ class Birim {
 
   @override
   String toString() {
-    // TODO: implement toString
     return birimAdi;
   }
 }
@@ -164,7 +163,6 @@ class Doviz {
 
   @override
   String toString() {
-    // TODO: implement toString
     return dovizSembol;
   }
 }

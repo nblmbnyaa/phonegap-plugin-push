@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+// ignore: camel_case_types
 typedef void setDeger(String str);
 
+// ignore: must_be_immutable
 class Form3Sayisal extends StatefulWidget {
   String labelicerik;
   TextEditingController clcdeger1;

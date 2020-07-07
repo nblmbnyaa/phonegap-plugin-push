@@ -113,14 +113,14 @@ class PageAnaMenuState extends State<PageAnaMenu> {
             itemCount: ustmenudekiler.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3, crossAxisSpacing: 4.0, mainAxisSpacing: 4.0),
-            itemBuilder: (BuildContext ctxt, int Index) {
+            itemBuilder: (BuildContext ctxt, int index) {
               return new GestureDetector(
                   onTap: () {
                     // Navigator.pushNamed(context, '/altmenu',
                     //     arguments: ustmenudekiler[Index].baslik);
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => PageAltMenu(
-                            ustmenu: ustmenudekiler[Index].paneladi)));
+                            ustmenu: ustmenudekiler[index].paneladi)));
                   },
                   child: Container(
                       // decoration: BoxDecoration(
@@ -134,7 +134,7 @@ class PageAnaMenuState extends State<PageAnaMenu> {
                       child: Column(
                         children: <Widget>[
                           Image(
-                              image: AssetImage(ustmenudekiler[Index].resim),
+                              image: AssetImage(ustmenudekiler[index].resim),
                               fit: BoxFit.cover),
                           Transform(
                             alignment: Alignment.bottomCenter,
@@ -144,7 +144,7 @@ class PageAnaMenuState extends State<PageAnaMenu> {
                               padding: EdgeInsets.all(8.0),
                               color: Color(0xFFFFEEDD),
                               child: Text(
-                                ustmenudekiler[Index].baslik,
+                                ustmenudekiler[index].baslik,
                                 textAlign: TextAlign.center,
                               ),
                             ),

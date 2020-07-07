@@ -305,27 +305,27 @@ class PageAlinanSiparisState extends State<PageAlinanSiparis> {
         "Cari Listesi",
         ListView.builder(
             itemCount: cariler.length,
-            itemBuilder: (BuildContext ctxt, int Index) {
+            itemBuilder: (BuildContext ctxt, int index) {
               return GestureDetector(
                 child: Container(
-                    color: Index % 2 == 0 ? Colors.blue[100] : Colors.blue[200],
+                    color: index % 2 == 0 ? Colors.blue[100] : Colors.blue[200],
                     child: Container(
                       margin: EdgeInsets.only(top: 10, bottom: 10),
                       child: Row(
                         children: <Widget>[
                           Expanded(
-                            child: Text(cariler[Index]["carikod"]),
+                            child: Text(cariler[index]["carikod"]),
                             flex: 1,
                           ),
                           Expanded(
-                            child: Text(cariler[Index]["cariunvan"]),
+                            child: Text(cariler[index]["cariunvan"]),
                             flex: 2,
                           )
                         ],
                       ),
                     )),
                 onTap: () {
-                  txtCariKod.text = cariler[Index]["carikod"];
+                  txtCariKod.text = cariler[index]["carikod"];
                   setState(() {});
                   Navigator.of(context).pop();
                   cariGetir();
@@ -381,28 +381,28 @@ class PageAlinanSiparisState extends State<PageAlinanSiparis> {
         "Ödeme Planı Listesi",
         ListView.builder(
             itemCount: gelen.length,
-            itemBuilder: (BuildContext ctxt, int Index) {
+            itemBuilder: (BuildContext ctxt, int index) {
               return GestureDetector(
                 child: Container(
-                    color: Index % 2 == 0 ? Colors.blue[100] : Colors.blue[200],
+                    color: index % 2 == 0 ? Colors.blue[100] : Colors.blue[200],
                     child: Container(
                       margin: EdgeInsets.only(top: 10, bottom: 10),
                       child: Row(
                         children: <Widget>[
                           Expanded(
-                            child: Text("${gelen[Index]["odp_no"]}"),
+                            child: Text("${gelen[index]["odp_no"]}"),
                             flex: 1,
                           ),
                           Expanded(
-                            child: Text(gelen[Index]["odp_adi"]),
+                            child: Text(gelen[index]["odp_adi"]),
                             flex: 2,
                           )
                         ],
                       ),
                     )),
                 onTap: () {
-                  txtOdemePlani.text = gelen[Index]["odp_adi"];
-                  odemePlani = gelen[Index]["odp_no"];
+                  txtOdemePlani.text = gelen[index]["odp_adi"];
+                  odemePlani = gelen[index]["odp_no"];
                   setState(() {});
                   Navigator.of(context).pop();
                 },

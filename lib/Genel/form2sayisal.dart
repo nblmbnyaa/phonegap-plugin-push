@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Form2Sayisal extends StatefulWidget {
   String labelicerik;
   TextEditingController clcdeger1;

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:prosis_mobile/Genel/basariUtilities.dart';
 
 typedef void SetDoviz(Doviz foo);
+// ignore: camel_case_types
 typedef void setFiyat(String str);
 
+// ignore: must_be_immutable
 class FormBirimFiyatveDoviz extends StatefulWidget {
   String labelicerik;
   TextEditingController clcmiktar;

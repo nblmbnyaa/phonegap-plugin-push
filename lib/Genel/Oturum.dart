@@ -1,7 +1,5 @@
 
 
-import 'dart:convert';
-
 class OturumBilgileri {
   String sirketkodu;
   String versiyonkodu;

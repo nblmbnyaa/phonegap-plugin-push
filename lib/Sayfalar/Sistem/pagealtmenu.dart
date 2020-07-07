@@ -43,7 +43,6 @@ class PageAltMenuState extends State<PageAltMenu> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     onload(widget.ustmenu);
@@ -62,11 +61,11 @@ class PageAltMenuState extends State<PageAltMenu> {
         itemCount: altmenudekiler.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3, crossAxisSpacing: 4.0, mainAxisSpacing: 4.0),
-        itemBuilder: (BuildContext ctxt, int Index) {
+        itemBuilder: (BuildContext ctxt, int index) {
           return new GestureDetector(
               onTap: () {
-                print(altmenudekiler[Index].viewname);
-                Navigator.pushNamed(context, altmenudekiler[Index].viewname);
+                print(altmenudekiler[index].viewname);
+                Navigator.pushNamed(context, altmenudekiler[index].viewname);
                 //Navigator.pushNamed(context, "/201003");
               },
               child: Container(
@@ -88,7 +87,7 @@ class PageAltMenuState extends State<PageAltMenu> {
                           padding: EdgeInsets.all(8.0),
                           
                           child: Text(
-                            altmenudekiler[Index].baslik,
+                            altmenudekiler[index].baslik,
                             textAlign: TextAlign.center,
                             style: TextStyle(color: Colors.white),
                           ),
@@ -104,7 +103,7 @@ class PageAltMenuState extends State<PageAltMenu> {
                           padding: EdgeInsets.all(8.0),
                           
                           child: Text(
-                            "${altmenudekiler[Index].menuno}",
+                            "${altmenudekiler[index].menuno}",
                             textAlign: TextAlign.center,
                             style: TextStyle(color: Colors.white)
                           ),

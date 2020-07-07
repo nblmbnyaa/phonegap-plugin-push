@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:prosis_mobile/Genel/basariUtilities.dart';
 
 typedef void SetBirim(Birim foo);
+
 typedef void miktaronChanged(String str);
 
 class FormMiktarveBirim extends StatefulWidget {
