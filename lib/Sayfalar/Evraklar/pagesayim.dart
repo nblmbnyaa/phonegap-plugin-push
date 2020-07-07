@@ -167,7 +167,7 @@ void evrakGetir() async{
       print(sn.sonuc);
       var gelen = json.decode(sn.sonuc);
       dsevrak = (gelen as List)
-          .map((e) => EvrakSatir.fromJson(e))
+          .map((e) => EvrakSatir.fromJson(e)) 
           .toList();
       stokTemizle();
     } else {
