@@ -1,0 +1,32 @@
+[
+    {
+        "baslik": "Evraklar",
+        "paneladi": "evraklar",
+        "resim": "assets/images/documents.png"
+    },
+    {
+        "baslik": "Operasyonlar",
+        "paneladi": "operasyonlar",
+        "resim": "assets/images/operations.png"
+    },
+    {
+        "baslik": "Genel Raporlar",
+        "paneladi": "genelraporlar",
+        "resim": "assets/images/reports.png"
+    },
+    {
+        "baslik": "Kasa",
+        "paneladi": "kasa",
+        "resim": "assets/images/kasaraporlari.png"
+    },
+    {
+        "baslik": "CRM",
+        "paneladi": "crm",
+        "resim": "assets/images/crm.png"
+    },
+    {
+        "baslik": "Sera",
+        "paneladi": "sera",
+        "resim": "assets/images/sera.png"
+    }
+]

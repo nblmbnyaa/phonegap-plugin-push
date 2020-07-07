@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "77520814914",
+    "firebase_url": "https://prosismobilepro.firebaseio.com",
+    "project_id": "prosismobilepro",
+    "storage_bucket": "prosismobilepro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:77520814914:android:0064c596f703e03372fedb",
+        "android_client_info": {
+          "package_name": "com.basarisistem.prosis_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "77520814914-nsrlrskme6h82r2dueqs98sfr0uusrpm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfgbcn-3ROnrRPwv9kFODri1GE6ig1WfE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "77520814914-nsrlrskme6h82r2dueqs98sfr0uusrpm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
