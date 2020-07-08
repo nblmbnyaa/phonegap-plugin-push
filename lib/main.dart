@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prosis_mobile/Sayfalar/Evraklar/pagealinansiparis.dart';
+import 'package:prosis_mobile/Sayfalar/Raporlar/pageCariHesapEkstresi.dart';
 import 'package:prosis_mobile/Sayfalar/Sistem/pagealtmenu.dart';
 import 'package:prosis_mobile/Sayfalar/Sistem/pageanamenu.dart';
 import 'package:prosis_mobile/Sayfalar/Sistem/pagegiris.dart';
@@ -37,6 +38,7 @@ void main() {
           ),
       "/201003": (context) => PageAlinanSiparis(),
       "/201006": (context) => PageSayim(),
+      "/201005": (context) => PageCariHesapEkstresi(),
     },
     //           locale: const Locale('de'), // change to locale you want. not all locales are supported
     // localizationsDelegates: [

@@ -746,11 +746,11 @@ class PageAlinanSiparisState extends State<PageAlinanSiparis> {
 
       var result = await BarcodeScanner.scan(options: options);
 
-      setState(() { 
+      setState(() {
         scanResult = result;
-        txtStokKodu.text=scanResult.rawContent;
+        txtStokKodu.text = scanResult.rawContent;
         stokGetir();
-        });
+      });
       //print(scanResult.rawContent);
     } on PlatformException catch (e) {
       var result = ScanResult(
