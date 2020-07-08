@@ -64,7 +64,6 @@ class PageAltMenuState extends State<PageAltMenu> {
         itemBuilder: (BuildContext ctxt, int index) {
           return new GestureDetector(
               onTap: () {
-                print(altmenudekiler[index].viewname);
                 Navigator.pushNamed(context, altmenudekiler[index].viewname);
                 //Navigator.pushNamed(context, "/201003");
               },

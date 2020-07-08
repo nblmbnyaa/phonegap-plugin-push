@@ -12,7 +12,12 @@ class BasariUtilities {
           return AlertDialog(
             title: Text(baslik),
             content: Container(
-                width: double.maxFinite, height: 300.0, child: listView),
+                width: double.maxFinite,
+                //height: 300.0,
+                child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal, child: listView))),
             actions: <Widget>[
               new FlatButton(
                 child: new Text('ÇIKIŞ'),

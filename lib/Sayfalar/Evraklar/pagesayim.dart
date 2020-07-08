@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:prosis_mobile/Genel/basariUtilities.dart';
+import 'package:prosis_mobile/Genel/formCiftButton.dart';
 import 'package:prosis_mobile/Genel/formmiktarvebirim.dart';
 import 'package:prosis_mobile/Genel/formtarih.dart';
 import 'package:prosis_mobile/Genel/formtextaramali.dart';
@@ -63,35 +64,30 @@ class PageSayimState extends State<PageSayim> {
     BasariUtilities().f10(
         context,
         "Depo Listesi",
-        ListView.builder(
-            itemCount: gelen.length,
-            itemBuilder: (BuildContext ctxt, int index) {
-              return GestureDetector(
-                child: Container(
-                    color: index % 2 == 0 ? Colors.blue[100] : Colors.blue[200],
-                    child: Container(
-                      margin: EdgeInsets.only(top: 10, bottom: 10),
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: Text("${gelen[index]["dep_no"]}"),
-                            flex: 1,
-                          ),
-                          Expanded(
-                            child: Text(gelen[index]["dep_adi"]),
-                            flex: 2,
-                          )
-                        ],
-                      ),
-                    )),
-                onTap: () {
-                  txtDepo.text = gelen[index]["dep_adi"];
-                  depoNo = gelen[index]["dep_no"];
-                  setState(() {});
-                  Navigator.of(context).pop();
-                },
-              );
-            }));
+        DataTable(
+            dataRowHeight: 35.0,
+            columnSpacing: 10,
+            showCheckboxColumn: false,
+            columns: <DataColumn>[
+              DataColumn(label: Text("No")),
+              DataColumn(label: Text("Adı"))
+            ],
+            rows: gelen
+                .map((e) => DataRow(
+                        onSelectChanged: (b) {
+                          if (b) {
+                            txtDepo.text = e["dep_adi"];
+                            depoNo = e["dep_no"];
+                            setState(() {});
+                            Navigator.of(context).pop();
+                          }
+                        },
+                        cells: <DataCell>[
+                          DataCell(Text(e["dep_no"].toString())),
+                          DataCell(Text(e["dep_adi"])),
+                        ]))
+                .toList())
+                );
   }
 
   void evrakAra() async {
@@ -117,41 +113,36 @@ class PageSayimState extends State<PageSayim> {
       return;
     }
 
-    List aramadata = json.decode(sn.sonuc);
+    List f10data = json.decode(sn.sonuc);
 
     BasariUtilities().f10(
-        context,
-        "Evrak Listesi",
-        ListView.builder(
-            itemCount: aramadata.length,
-            itemBuilder: (BuildContext ctxt, int index) {
-              return GestureDetector(
-                child: Container(
-                    color: index % 2 == 0 ? Colors.blue[100] : Colors.blue[200],
-                    child: Container(
-                      margin: EdgeInsets.only(top: 10, bottom: 10),
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: Text(aramadata[index]["evrakno"].toString()),
-                            flex: 1,
-                          )
-                        ],
-                      ),
-                    )),
-                onTap: () {
-                  clcEvrakSira.text = aramadata[index]["evrakno"].toString();
-                  evrakGetir();
-                  setState(() {});
-                  Navigator.of(context).pop();
-                },
-              );
-            }));
+      context,
+      "Evrak Listesi",
+      DataTable(
+          dataRowHeight: 35.0,
+          columnSpacing: 10,
+          showCheckboxColumn: false,
+          columns: <DataColumn>[
+            DataColumn(label: Text("No")),
+          ],
+          rows: f10data
+              .map((e) => DataRow(
+                      onSelectChanged: (b) {
+                        if (b) {
+                          clcEvrakSira.text = e["evrakno"].toString();
+                          evrakGetir();
+                          setState(() {});
+                          Navigator.of(context).pop();
+                        }
+                      },
+                      cells: <DataCell>[
+                        DataCell(Text(e["evrakno"].toString())),
+                      ]))
+              .toList()),
+    );
   }
 
-void evrakGetir() async{
-  
-
+  void evrakGetir() async {
     List<String> parametreler = new List<String>();
     parametreler.add(JsonEncoder().convert(MyApp.oturum));
     Map<String, dynamic> sbp = {
@@ -164,17 +155,14 @@ void evrakGetir() async{
     DefaultReturn sn = await BasariUtilities()
         .getApiSonuc(parametreler, MyApp.apiUrl + "apisayim/EvrakGetir");
     if (sn.basarili) {
-      print(sn.sonuc);
       var gelen = json.decode(sn.sonuc);
-      dsevrak = (gelen as List)
-          .map((e) => EvrakSatir.fromJson(e)) 
-          .toList();
+      dsevrak = (gelen as List).map((e) => EvrakSatir.fromJson(e)).toList();
       stokTemizle();
     } else {
       Mesajlar().tamam(context, Text(sn.sonuc), Text("HATA"));
     }
     setState(() {});
-}
+  }
 
   void stokKoduAra() {
     stokAra(true);
@@ -209,40 +197,34 @@ void evrakGetir() async{
       return;
     }
 
-    List cariler = json.decode(sn.sonuc);
+    List f10data = json.decode(sn.sonuc);
 
     BasariUtilities().f10(
         context,
         "Stok Listesi",
-        ListView.builder(
-            itemCount: cariler.length,
-            itemBuilder: (BuildContext ctxt, int index) {
-              return GestureDetector(
-                child: Container(
-                    color: index % 2 == 0 ? Colors.blue[100] : Colors.blue[200],
-                    child: Container(
-                      margin: EdgeInsets.only(top: 10, bottom: 10),
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: Text(cariler[index]["stokkodu"]),
-                            flex: 1,
-                          ),
-                          Expanded(
-                            child: Text(cariler[index]["stokadi"]),
-                            flex: 2,
-                          )
-                        ],
-                      ),
-                    )),
-                onTap: () {
-                  txtStokKodu.text = cariler[index]["stokkodu"];
-                  setState(() {});
-                  Navigator.of(context).pop();
-                  stokGetir();
-                },
-              );
-            }));
+        DataTable(
+            dataRowHeight: 35.0,
+            columnSpacing: 10,
+            showCheckboxColumn: false,
+            columns: <DataColumn>[
+              DataColumn(label: Text("Stok Kodu")),
+              DataColumn(label: Text("Stok Adı"))
+            ],
+            rows: f10data
+                .map((e) => DataRow(
+                        onSelectChanged: (b) {
+                          if (b) {
+                            txtStokKodu.text = e["stokkodu"];
+                            setState(() {});
+                            Navigator.of(context).pop();
+                            stokGetir();
+                          }
+                        },
+                        cells: <DataCell>[
+                          DataCell(Text(e["stokkodu"])),
+                          DataCell(Text(e["stokadi"])),
+                        ]))
+                .toList()));
   }
 
   void stokGetir() async {
@@ -275,7 +257,6 @@ void evrakGetir() async{
     final _possibleFormats = BarcodeFormat.values.toList()
       ..removeWhere((e) => e == BarcodeFormat.unknown);
     List<BarcodeFormat> selectedFormats = [..._possibleFormats];
-    //print(selectedFormats);
     try {
       var options = ScanOptions(
         strings: {
@@ -299,7 +280,6 @@ void evrakGetir() async{
         txtStokKodu.text = scanResult.rawContent;
         stokGetir();
       });
-      //print(scanResult.rawContent);
     } on PlatformException catch (e) {
       var result = ScanResult(
         type: ResultType.Error,
@@ -349,9 +329,8 @@ void evrakGetir() async{
     DefaultReturn sn = await BasariUtilities()
         .getApiSonuc(parametreler, MyApp.apiUrl + "apisayim/Ekle");
     if (sn.basarili) {
-      print(sn.sonuc);
       var gelen = json.decode(sn.sonuc);
-      clcEvrakSira.text=gelen["evraksira"].toString();
+      clcEvrakSira.text = gelen["evraksira"].toString();
       dsevrak = (gelen["eklenenler"] as List)
           .map((e) => EvrakSatir.fromJson(e))
           .toList();
@@ -417,16 +396,16 @@ void evrakGetir() async{
     }
   }
 
-  void satirSil(int index) async {
+  void satirSil(EvrakSatir es) async {
     List<String> parametreler = new List<String>();
     parametreler.add(JsonEncoder().convert(MyApp.oturum));
-    parametreler.add(jsonEncode(dsevrak[index].kayitrecno));
-    parametreler.add(jsonEncode(dsevrak[index].kayitguid));
+    parametreler.add(jsonEncode(es.kayitrecno));
+    parametreler.add(jsonEncode(es.kayitguid));
 
     DefaultReturn sn = await BasariUtilities()
         .getApiSonuc(parametreler, MyApp.apiUrl + "apisayim/SatirSil");
     if (sn.basarili) {
-      dsevrak.removeAt(index);
+      dsevrak.remove(es);
       setState(() {});
     } else {
       Mesajlar().tamam(context, Text(sn.sonuc), Text("HATA"));
@@ -460,38 +439,40 @@ void evrakGetir() async{
             body: TabBarView(
               children: <Widget>[
                 //////////////////// Depo Sayfası//////////////
-                Center(
+                SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
                     child: Column(
-                  children: <Widget>[
-                    FormTextAramali(
-                      readOnly: true,
-                      labelicerik: "Depo",
-                      onPressedAra: depoAra,
-                      txtkod: txtDepo,
-                      buttonVisible: !readonlyDepo,
-                    ),
-                    FormTarih(
-                      labelicerik: "Sayım Tarihi",
-                      dttarih: dtSayimTarihi,
-                      tarih: sayimTarihi,
-                      setTarih: (DateTime foo) {
-                        sayimTarihi = foo;
-                      },
-                      readonlytarih: readonlySayimTarihi,
-                      //ctx: context,
-                    ),
-                    FormTextAramali(
-                      readOnly: true,
-                      labelicerik: "Evrak No",
-                      txtkod: clcEvrakSira,
-                      onPressedAra: evrakAra,
-                      buttonVisible: true,
-                    ),
-                  ],
-                )),
+                      children: <Widget>[
+                        FormTextAramali(
+                          readOnly: true,
+                          labelicerik: "Depo",
+                          onPressedAra: depoAra,
+                          txtkod: txtDepo,
+                          buttonVisible: !readonlyDepo,
+                        ),
+                        FormTarih(
+                          labelicerik: "Sayım Tarihi",
+                          dttarih: dtSayimTarihi,
+                          tarih: sayimTarihi,
+                          setTarih: (DateTime foo) {
+                            sayimTarihi = foo;
+                          },
+                          readonlytarih: readonlySayimTarihi,
+                          //ctx: context,
+                        ),
+                        FormTextAramali(
+                          readOnly: true,
+                          labelicerik: "Evrak No",
+                          txtkod: clcEvrakSira,
+                          onPressedAra: evrakAra,
+                          buttonVisible: true,
+                        ),
+                      ],
+                    )),
 
 /////////////////////////////////// Stok sayfası /////////////////////////////////////
-                Center(
+                SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
                   child: Column(
                     children: <Widget>[
                       FormTextAramaliCiftBtn(
@@ -518,87 +499,61 @@ void evrakGetir() async{
                         },
                         focusnode: focusmiktar,
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 20),
-                        child: Row(
-                          children: <Widget>[
-                            Expanded(
-                                flex: 5,
-                                child: Padding(
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  child: RaisedButton(
-                                    child: Text("Ekle"),
-                                    onPressed: ekle,
-                                    color: Colors.green[400],
-                                  ),
-                                )),
-                            Expanded(
-                                flex: 3,
-                                child: Padding(
-                                  padding: EdgeInsets.only(left: 5, right: 5),
-                                  child: RaisedButton(
-                                    child: Text("Temizle"),
-                                    onPressed: stokTemizle,
-                                    color: Colors.red[400],
-                                  ),
-                                )),
-                          ],
-                        ),
-                      )
+                       FormCiftButton(
+                        button1flex: 5,
+                        button1icerik: "Ekle",
+                        button1islem: ekle,
+                        button1renk: Colors.green[400],
+                        button2flex: 3,
+                        button2icerik: "Temizle",
+                        button2islem: stokTemizle,
+                        button2renk: Colors.red[400],
+                      ),
                     ],
                   ),
                 ),
                 /////////////////////////////EVRAK//////////////////////////
-                Center(
-                  child: ListView.builder(
-                      itemCount: dsevrak.length,
-                      itemBuilder: (BuildContext ctxt, int index) {
-                        return GestureDetector(
-                          child: Container(
-                              color: index % 2 == 0
-                                  ? Colors.blue[100]
-                                  : Colors.blue[200],
-                              child: Container(
-                                  margin: EdgeInsets.only(top: 10, bottom: 10),
-                                  child: Padding(
-                                    padding: EdgeInsets.only(left: 5),
-                                    child: Column(
-                                      children: <Widget>[
-                                        Row(
-                                          children: <Widget>[
-                                            Expanded(
-                                              child:
-                                                  Text(dsevrak[index].stokadi),
-                                              flex: 6,
-                                            ),
-                                            Expanded(
-                                              child: Text(
-                                                  "${dsevrak[index].miktar} ${dsevrak[index].birimadi}"),
-                                              flex: 2,
-                                            )
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ))),
-
-                          onLongPress: () {
-                            Future<bool> cevap = Mesajlar().yesno(
-                                context,
-                                Text(
-                                    "Seçili satırı silmek istediğinizden emin misiniz?"),
-                                Text("Uyarı"),
-                                "Sil",
-                                "Vazgeç");
-                            cevap.then((value) {
-                              if (value) {
-                                satirSil(index);
-                              }
-                            });
-                          },
-                          //TOOD buraya silmek için bir işlem konacak
-                        );
-                      }),
+                SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: DataTable(
+                        columnSpacing: 10,
+                        dataRowHeight: 40,
+                        showCheckboxColumn: false,
+                        columns: <DataColumn>[
+                          DataColumn(label: Text("Stok")),
+                          DataColumn(label: Text("Miktar"), numeric: true),
+                          DataColumn(label: Text("Sil")),
+                        ],
+                        rows: dsevrak
+                            .map((e) => DataRow(cells: [
+                                  DataCell(Column(
+                                    children: <Widget>[
+                                      Text(e.stokkodu),
+                                      Text(e.stokadi),
+                                    ],
+                                  )),
+                                  DataCell(Text("${e.miktar} ${e.birimadi}")),
+                                  DataCell(RaisedButton(
+                                      child: Text("Satır Sil"),
+                                      onPressed: () {
+                                        Future<bool> cevap = Mesajlar().yesno(
+                                            context,
+                                            Text(
+                                                "Seçili satırı silmek istediğinizden emin misiniz?"),
+                                            Text("Uyarı"),
+                                            "Sil",
+                                            "Vazgeç");
+                                        cevap.then((value) {
+                                          if (value) {
+                                            satirSil(e);
+                                          }
+                                        });
+                                      }))
+                                ]))
+                            .toList()),
+                  ),
                 ),
               ],
             ),

@@ -243,12 +243,24 @@ class PageCariHesapEkstresiState extends State<PageCariHesapEkstresi> {
                                 ],
                                 rows: dataList
                                     .map((e) => DataRow(
-                                      
+                                      onSelectChanged: (b){
+
+                                      },
                                       cells: [
-                                          DataCell(Text(intl.DateFormat(
+                                          DataCell(
+                                            GestureDetector(
+                                              child: Text(intl.DateFormat(
                                                   "dd.MM.yyyy")
                                               .format(
-                                                  DateTime.parse(e["Tarih"])))),
+                                                  DateTime.parse(e["Tarih"])))
+                                                  ,onLongPress: ()
+                                                  {
+                                                    Mesajlar().tamam(context, Text(e["EvrakNo"].toString()), Text("baslik"));
+                                                  },
+                                                  ),
+                                                  
+                                            )
+                                            ,
                                           DataCell(
                                               Text(e["EvrakTipi"].toString())),
                                           DataCell(

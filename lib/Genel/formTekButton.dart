@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class FormTekButton extends StatefulWidget {
   TextEditingController dttarih;
   String icerik;
@@ -23,12 +22,18 @@ class FormTekButtonState extends State<FormTekButton> {
         children: <Widget>[
           Expanded(
               flex: 1,
-              child: Padding(
-                padding: EdgeInsets.only(left: 5, right: 5),
-                child: RaisedButton(
-                  child: Text(widget.icerik),
+              child: Material(
+                elevation: 5.0,
+                borderRadius: BorderRadius.circular(20.0),
+                color: widget.renk,
+                child: MaterialButton(
+                  minWidth: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                   onPressed: widget.islem,
-                  color: widget.renk,
+                  child: Text(widget.icerik,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white, fontStyle: FontStyle.normal)),
                 ),
               )),
         ],

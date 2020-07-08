@@ -27,12 +27,10 @@ class PageGirisAyarlariState extends State<PageGirisAyarlari> {
     parametreler.add(txtApiSifre.text);
 
     if (!txtApiUrl.text.startsWith("http")) {
-      print("http");
       txtApiUrl.text = "http://" + txtApiUrl.text;
       setState(() {});
     }
     if (!txtApiUrl.text.endsWith("/")) {
-      print("/");
       txtApiUrl.text = txtApiUrl.text + "/";
       setState(() {});
     }

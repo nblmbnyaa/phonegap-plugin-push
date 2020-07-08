@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:prosis_mobile/Genel/basariUtilities.dart';
 
 typedef void SetBirim(Birim foo);
-
-typedef void miktaronChanged(String str);
+typedef void MiktaronChanged(String str);
 
 class FormMiktarveBirim extends StatefulWidget {
   String labelicerik;
@@ -11,7 +10,7 @@ class FormMiktarveBirim extends StatefulWidget {
   List<Birim> birimler;
   Birim selectedValue;
   SetBirim setBirim;
-  miktaronChanged onChanged;
+  MiktaronChanged onChanged;
   FocusNode focusnode;
 
   FormMiktarveBirim(
