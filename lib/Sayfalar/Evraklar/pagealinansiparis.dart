@@ -1168,12 +1168,11 @@ class PageAlinanSiparisState extends State<PageAlinanSiparis> {
                     scrollDirection: Axis.horizontal,
                     child: DataTable(
                         columnSpacing: 10,
-                        dataRowHeight: 80,
+                        dataRowHeight: 40,
                         showCheckboxColumn: false,
                         columns: <DataColumn>[
-                          DataColumn(
-                              label: Text("Stok")),
-                          DataColumn(label: Text("Miktar"), numeric: true),
+                          DataColumn(label: Text("Stok")),
+                          DataColumn(label: Text("Miktar")),
                           DataColumn(label: Text("Birim Fiyat"), numeric: true),
                           DataColumn(label: Text("Tutar"), numeric: true),
                           DataColumn(label: Text("Sil")),
@@ -1182,13 +1181,16 @@ class PageAlinanSiparisState extends State<PageAlinanSiparis> {
                             .map((e) => DataRow(cells: [
                                   DataCell(
                                     Container(
-                                        width: 100,
-                                        child: Column(
-                                          children: <Widget>[
-                                            Text(e.stokkodu),
-                                            Text(e.stokadi),
-                                          ],
-                                        )),
+                                      width: 150,
+                                      child: SingleChildScrollView(
+                                          scrollDirection: Axis.vertical,
+                                          child: Column(
+                                            children: <Widget>[
+                                              Text(e.stokkodu),
+                                              Text(e.stokadi),
+                                            ],
+                                          )),
+                                    ),
                                   ),
                                   DataCell(Text("${e.miktar} ${e.birimadi}")),
                                   DataCell(Text("${e.birimfiyat} TL")),
