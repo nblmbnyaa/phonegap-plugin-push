@@ -67,35 +67,33 @@ class PageCariHesapEkstresiState extends State<PageCariHesapEkstresi> {
     BasariUtilities().f10(
         context,
         "Cari Listesi",
-        ListView.builder(
-            itemCount: cariler.length,
-            itemBuilder: (BuildContext ctxt, int index) {
-              return GestureDetector(
-                child: Container(
-                    color: index % 2 == 0 ? Colors.blue[100] : Colors.blue[200],
-                    child: Container(
-                      margin: EdgeInsets.only(top: 10, bottom: 10),
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: Text(cariler[index]["carikod"]),
-                            flex: 1,
-                          ),
-                          Expanded(
-                            child: Text(cariler[index]["cariunvan"]),
-                            flex: 2,
-                          )
-                        ],
-                      ),
-                    )),
-                onTap: () {
-                  txtCariKod.text = cariler[index]["carikod"];
-                  setState(() {});
-                  Navigator.of(context).pop();
-                  cariGetir();
-                },
-              );
-            }));
+        DataTable(
+          showCheckboxColumn: false,
+          dataRowHeight: 35.0,
+          columnSpacing: 10,
+          columns: [
+            DataColumn(label: Text("Cari Kod")),
+            DataColumn(label: Text("Cari Unvan")),
+          ],
+          rows: cariler
+              .map((e) => DataRow(
+                      onSelectChanged: (b) {
+                        txtCariKod.text = e["carikod"];
+                        setState(() {});
+                        Navigator.of(context).pop();
+                        cariGetir();
+                      },
+                      cells: [
+                        DataCell(
+                          Text(e["carikod"]),
+                        ),
+                        DataCell(
+                          Text(e["cariunvan"]),
+                        ),
+                      ]))
+              .toList(),
+        )
+        );
   }
 
   void cariGetir() async {
@@ -216,7 +214,7 @@ class PageCariHesapEkstresiState extends State<PageCariHesapEkstresi> {
                       FormTekButton(
                         icerik: "Parametreler",
                         islem: parametreleriAc,
-                        renk: Colors.yellow[300],
+                        renk: Colors.red[300],
                       ),
                       SingleChildScrollView(
                           scrollDirection: Axis.vertical,

@@ -86,8 +86,7 @@ class PageSayimState extends State<PageSayim> {
                           DataCell(Text(e["dep_no"].toString())),
                           DataCell(Text(e["dep_adi"])),
                         ]))
-                .toList())
-                );
+                .toList()));
   }
 
   void evrakAra() async {
@@ -350,12 +349,6 @@ class PageSayimState extends State<PageSayim> {
     setState(() {});
   }
 
-  Future<bool> backPressed() {
-    return Mesajlar().yesno(context, Text("Çıkmak istediğinizden emin misiniz"),
-            Text("Uyarı"), "Çık", "Vazgeç") ??
-        false;
-  }
-
   Future onLoad() async {
     dtSayimTarihi.text = intl.DateFormat("dd.MM.yyyy").format(sayimTarihi);
     clcEvrakSira.text = "0";
@@ -499,7 +492,7 @@ class PageSayimState extends State<PageSayim> {
                         },
                         focusnode: focusmiktar,
                       ),
-                       FormCiftButton(
+                      FormCiftButton(
                         button1flex: 5,
                         button1icerik: "Ekle",
                         button1islem: ekle,
@@ -559,7 +552,7 @@ class PageSayimState extends State<PageSayim> {
             ),
           ),
         ),
-        onWillPop: backPressed);
+        onWillPop: () => Mesajlar().backPressed(context));
   }
 }
 

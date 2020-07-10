@@ -46,6 +46,25 @@ class PageAnaMenuState extends State<PageAnaMenu> {
     });
   }
 
+  IconData icongetir(String isim) {
+    switch (isim) {
+      case "Evraklar":
+        return Icons.edit;
+      case "Operasyonlar":
+        return Icons.widgets;
+      case "Genel Raporlar":
+        return Icons.equalizer;
+      case "Kasa":
+        return Icons.business_center;
+      case "CRM":
+        return Icons.contact_phone;
+      case "Sera":
+        return Icons.wb_sunny;
+      default:
+        return Icons.email;
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -110,6 +129,7 @@ class PageAnaMenuState extends State<PageAnaMenu> {
           onWillPop: backpressed,
           child: Center(
               child: GridView.builder(
+            scrollDirection: Axis.vertical,
             itemCount: ustmenudekiler.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3, crossAxisSpacing: 4.0, mainAxisSpacing: 4.0),
@@ -133,9 +153,11 @@ class PageAnaMenuState extends State<PageAnaMenu> {
                       alignment: Alignment.bottomCenter,
                       child: Column(
                         children: <Widget>[
-                          Image(
-                              image: AssetImage(ustmenudekiler[index].resim),
-                              fit: BoxFit.cover),
+                          // Image(
+                          //     image: AssetImage(ustmenudekiler[index].resim),
+                          //     fit: BoxFit.cover),
+
+                          Icon(icongetir(ustmenudekiler[index].baslik),size: 70,),
                           Transform(
                             alignment: Alignment.bottomCenter,
                             transform: Matrix4.skewY(0.0)..rotateZ(0.0),

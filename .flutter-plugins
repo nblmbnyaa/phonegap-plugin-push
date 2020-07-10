@@ -1,7 +1,9 @@
 # This is a generated file; do not edit or check into version control.
 barcode_scan=E:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\barcode_scan-3.0.1\\
 firebase_messaging=E:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_messaging-6.0.16\\
+flutter_plugin_android_lifecycle=E:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\flutter_plugin_android_lifecycle-1.0.8\\
 fluttertoast=E:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\fluttertoast-4.0.1\\
+image_picker=E:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\image_picker-0.6.7+4\\
 path_provider=E:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider-1.6.9\\
 path_provider_macos=E:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_macos-0.0.4+3\\
 shared_preferences=E:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\shared_preferences-0.5.7+3\\
@@ -10,3 +12,4 @@ shared_preferences_web=E:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\shared
 url_launcher=E:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\url_launcher-5.4.10\\
 url_launcher_macos=E:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\url_launcher_macos-0.0.1+7\\
 url_launcher_web=E:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\url_launcher_web-0.1.1+6\\
+webview_flutter=E:\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\webview_flutter-0.3.22+1\\

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:prosis_mobile/Genel/Oturum.dart';
 import 'package:prosis_mobile/Genel/basariUtilities.dart';
+import 'package:prosis_mobile/Genel/formCiftButton.dart';
 import 'package:prosis_mobile/Genel/formtextaramasiz.dart';
 import 'package:prosis_mobile/Genel/mesajlar.dart';
 import 'package:prosis_mobile/main.dart';
@@ -156,65 +157,74 @@ class PageGirisState extends State<PageGiris> {
         child: Padding(
             padding: EdgeInsets.only(left: 10, right: 10),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                FormTextAramasiz(
-                  labelicerik: "Şirket",
-                  txtkod: txtSirket,
-                ),
-                FormTextAramasiz(
-                  labelicerik: "Kullanıcı",
-                  txtkod: txtKullanici,
-                ),
-                FormTextAramasiz(
-                  labelicerik: "Şifre",
-                  txtkod: txtSifre,
-                  isPassword: true,
-                ),
-                Row(
-                  children: <Widget>[
-                    Checkbox(
-                      value: beniHarla,
-                      onChanged: (value) {
-                        setState(() {
-                          beniHarla = value;
-                        });
-                      },
-                    ),
-                    Text("Beni Hatırla"),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    Visibility(
-                      visible: false,
-                      child: Text(_homeScreenText),
-                    )
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    Expanded(
-                        flex: 3,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 5, right: 5),
-                          child: RaisedButton(
-                            child: Text("Giriş"),
-                            onPressed: giris,
-                            color: Colors.green[300],
-                          ),
-                        )),
-                    Expanded(
-                        flex: 4,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 5, right: 5),
-                          child: RaisedButton(
-                            child: Text("Bağlantı Ayarları"),
-                            onPressed: baglantiAyarlari,
-                            color: Colors.orange[300],
-                          ),
-                        )),
-                  ],
-                )
+                Expanded(
+                    flex: 2,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Image(
+                            image: AssetImage("assets/images/prosislogo.png"),
+                            fit: BoxFit.cover),
+                      ],
+                    )),
+                Expanded(
+                    flex: 4,
+                    child: SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            FormTextAramasiz(
+                              labelicerik: "Şirket",
+                              txtkod: txtSirket,
+                            ),
+                            FormTextAramasiz(
+                              labelicerik: "Kullanıcı",
+                              txtkod: txtKullanici,
+                            ),
+                            FormTextAramasiz(
+                              labelicerik: "Şifre",
+                              txtkod: txtSifre,
+                              isPassword: true,
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Checkbox(
+                                  value: beniHarla,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      beniHarla = value;
+                                    });
+                                  },
+                                ),
+                                Text("Beni Hatırla"),
+                              ],
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Visibility(
+                                  visible: false,
+                                  child: Text(_homeScreenText),
+                                )
+                              ],
+                            ),
+                            FormCiftButton(
+                              button1flex: 5,
+                              button1icerik: "Giriş",
+                              button1renk: Colors.green[300],
+                              button1islem: giris,
+                              button2flex: 3,
+                              button2icerik: "Bağlantı Ayarları",
+                              button2islem: baglantiAyarlari,
+                              button2renk: Colors.orange[300],
+                            ),
+                          ],
+                        )))
               ],
             )),
       ),

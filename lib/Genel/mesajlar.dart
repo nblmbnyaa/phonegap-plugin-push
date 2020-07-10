@@ -58,4 +58,11 @@ class Mesajlar {
           );
         });
   }
+
+  Future<bool> backPressed(BuildContext context) {
+    return yesno(context, Text("Çıkmak istediğinizden emin misiniz"),
+            Text("Uyarı"), "Çık", "Vazgeç") ??
+        false;
+  }
+
 }

@@ -122,6 +122,12 @@
       "languageVersion": "2.2"
     },
     {
+      "name": "flutter_plugin_android_lifecycle",
+      "rootUri": "file:///E:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-1.0.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///E:/flutter/packages/flutter_test",
       "packageUri": "lib/",
@@ -152,6 +158,12 @@
       "languageVersion": "2.3"
     },
     {
+      "name": "html_editor",
+      "rootUri": "file:///E:/flutter/.pub-cache/hosted/pub.dartlang.org/html_editor-1.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "http",
       "rootUri": "file:///E:/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.1",
       "packageUri": "lib/",
@@ -168,6 +180,18 @@
       "rootUri": "file:///E:/flutter/.pub-cache/hosted/pub.dartlang.org/image-2.1.12",
       "packageUri": "lib/",
       "languageVersion": "2.0"
+    },
+    {
+      "name": "image_picker",
+      "rootUri": "file:///E:/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker-0.6.7+4",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "image_picker_platform_interface",
+      "rootUri": "file:///E:/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker_platform_interface-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.5"
     },
     {
       "name": "intl",
@@ -216,6 +240,12 @@
       "rootUri": "file:///E:/flutter/.pub-cache/hosted/pub.dartlang.org/meta-1.1.8",
       "packageUri": "lib/",
       "languageVersion": "1.12"
+    },
+    {
+      "name": "mime",
+      "rootUri": "file:///E:/flutter/.pub-cache/hosted/pub.dartlang.org/mime-0.9.6+3",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
     },
     {
       "name": "node_interop",
@@ -428,6 +458,12 @@
       "languageVersion": "2.2"
     },
     {
+      "name": "webview_flutter",
+      "rootUri": "file:///E:/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter-0.3.22+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
       "name": "xml",
       "rootUri": "file:///E:/flutter/.pub-cache/hosted/pub.dartlang.org/xml-3.6.1",
       "packageUri": "lib/",
@@ -446,7 +482,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-07-08T06:57:54.753621Z",
+  "generated": "2020-07-10T22:37:32.627496Z",
   "generator": "pub",
   "generatorVersion": "2.8.4"
 }

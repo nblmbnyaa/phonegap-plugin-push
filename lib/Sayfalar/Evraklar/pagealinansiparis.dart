@@ -950,12 +950,6 @@ class PageAlinanSiparisState extends State<PageAlinanSiparis> {
         (1 + vergiorani / 100));
   }
 
-  Future<bool> backPressed() {
-    return Mesajlar().yesno(context, Text("Çıkmak istediğinizden emin misiniz"),
-            Text("Uyarı"), "Çık", "Vazgeç") ??
-        false;
-  }
-
   @override
   void initState() {
     onLoad();
@@ -1312,7 +1306,7 @@ class PageAlinanSiparisState extends State<PageAlinanSiparis> {
             ),
           ),
         ),
-        onWillPop: backPressed);
+        onWillPop: () => Mesajlar().backPressed(context));
   }
 }
 

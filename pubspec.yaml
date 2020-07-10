@@ -37,6 +37,7 @@ dependencies:
   intl: ^0.16.1
   barcode_scan: ^3.0.1
   firebase_messaging: ^6.0.16
+  html_editor: ^1.0.1
 
 dev_dependencies:
   flutter_test:

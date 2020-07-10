@@ -215,3 +215,19 @@ class Parametre {
         sonuc: json["sonuc"]);
   }
 }
+
+class GenelEnum {
+  int no;
+  String adi;
+
+  GenelEnum({this.no, this.adi});
+
+  factory GenelEnum.fromJson(Map<String, dynamic> json) {
+    return GenelEnum(no: json["no"], adi: json["adi"]);
+  }
+
+  @override
+  String toString() {
+    return adi;
+  }
+}

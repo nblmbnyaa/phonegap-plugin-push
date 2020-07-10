@@ -1,4 +1,4 @@
-#Wed Jul 08 15:28:09 EET 2020
+#Fri Jul 10 01:07:57 EET 2020
 base.0=C\:\\BasariliProjeler\\prosis_mobile\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

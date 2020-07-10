@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:prosis_mobile/Genel/basariUtilities.dart';
+import 'package:prosis_mobile/Genel/formCiftButton.dart';
 import 'package:prosis_mobile/Genel/formtextaramasiz.dart';
 import 'package:prosis_mobile/Genel/mesajlar.dart';
 import 'package:prosis_mobile/main.dart';
@@ -89,7 +90,11 @@ class PageGirisAyarlariState extends State<PageGirisAyarlari> {
       body: Center(
           child: Padding(
         padding: EdgeInsets.all(5),
-        child: Column(
+        child:SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             FormTextAramasiz(
               labelicerik: "Api Url",
@@ -100,34 +105,23 @@ class PageGirisAyarlariState extends State<PageGirisAyarlari> {
               txtkod: txtApiSifre,
               isPassword: true,
             ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                    flex: 4,
-                    child: Padding(
-                        padding: EdgeInsets.only(left: 5, right: 5),
-                        child: RaisedButton(
-                          color: Colors.orange,
-                          child: Text("Bağlantı Testi"),
-                          onPressed: baglantiTesti,
-                        ))),
-                Expanded(
-                    flex: 3,
-                    child: Padding(
-                        padding: EdgeInsets.only(left: 5, right: 5),
-                        child: RaisedButton(
-                          color: Colors.lightBlue,
-                          child: Text("Kaydet"),
-                          onPressed: kaydet,
-                        ))),
-              ],
+            FormCiftButton(
+button1flex: 4,
+button1islem: baglantiTesti,
+button1icerik: "Bağlantı Testi",
+button1renk: Colors.orange[300],
+button2flex: 4,
+button2icerik: "Kaydet",
+button2islem: kaydet,
+button2renk: Colors.green[300],
             ),
+            
             RichText(
               textAlign: TextAlign.left,
               text: TextSpan(style: TextStyle(color: Colors.black), children: [
                 TextSpan(
                     text:
-                        "Programımız API aracılığı ile çalışmaktadır.\nUygulamayı denemek için 'Bağlantı Bilgileri' ni boş bırakınız.\nAPI'nin sunucunuza yüklenmesi için "),
+                        "\n\nProgramımız API aracılığı ile çalışmaktadır.\nUygulamayı denemek için 'Bağlantı Bilgileri' ni boş bırakınız.\nAPI'nin sunucunuza yüklenmesi için "),
                 LinkTextSpan(
                     style: TextStyle(
                         color: Colors.blue,
@@ -140,7 +134,7 @@ class PageGirisAyarlariState extends State<PageGirisAyarlari> {
               ]),
             ),
           ],
-        ),
+        )),
       )),
     );
   }
