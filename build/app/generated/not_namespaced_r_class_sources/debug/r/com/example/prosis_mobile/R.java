@@ -22025,9 +22025,10 @@ public final class R {
     public static final int ViewStubCompat_android_inflatedId=2;
   }
   public static final class xml {
-    public static final int standalone_badge=0x7f110000;
-    public static final int standalone_badge_gravity_bottom_end=0x7f110001;
-    public static final int standalone_badge_gravity_bottom_start=0x7f110002;
-    public static final int standalone_badge_gravity_top_start=0x7f110003;
+    public static final int flutter_image_picker_file_paths=0x7f110000;
+    public static final int standalone_badge=0x7f110001;
+    public static final int standalone_badge_gravity_bottom_end=0x7f110002;
+    public static final int standalone_badge_gravity_bottom_start=0x7f110003;
+    public static final int standalone_badge_gravity_top_start=0x7f110004;
   }
 }

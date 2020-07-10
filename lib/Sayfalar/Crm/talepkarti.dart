@@ -65,18 +65,18 @@ class TalepKartiState extends State<TalepKarti> {
     if (sn.basarili) {
       var gelen = json.decode(sn.sonuc);
       txtAcilisZamani.text =
-          intl.DateFormat("dd.MM.yyyy HH:mm").format(gelen["AcilisZamani"]);
-      durumu = durumlar.where((element) => element.no = gelen["Durumu"]).first;
+          intl.DateFormat("dd.MM.yyyy HH:mm").format(DateTime.parse(gelen["AcilisZamani"]));
+      durumu = durumlar.where((element) => element.no ==int.parse(gelen["Durumu"].toString())).first;
       oncelik =
-          oncelikler.where((element) => element.no = gelen["Oncelik"]).first;
+          oncelikler.where((element) => element.no == gelen["Oncelik"]).first;
       destekSekli = destekSekilleri
-          .where((element) => element.no = gelen["DestekSekli"])
+          .where((element) => element.no == gelen["DestekSekli"])
           .first;
       destekCinsi = destekCinsleri
-          .where((element) => element.no = gelen["DestekCinsi"])
+          .where((element) => element.no == gelen["DestekCinsi"])
           .first;
       departman = departmanlar
-          .where((element) => element.no = gelen["Departmani"])
+          .where((element) => element.no == gelen["Departmani"])
           .first;
       txtSahibi.text = gelen["Sahibi"];
       txtIlgili.text = gelen["Ilgili"];
@@ -211,7 +211,11 @@ class TalepKartiState extends State<TalepKarti> {
   void musteriGetir() async {
     List<String> parametreler = new List<String>();
     parametreler.add(JsonEncoder().convert(MyApp.oturum));
-    parametreler.add(txtMusteriKodu.text);
+    Map<String,dynamic> prm={
+      "musterikodu":txtMusteriKodu.text,
+      "musteriunvani":txtMusteriAdi.text
+    };
+    parametreler.add(jsonEncode(prm));
     DefaultReturn sn = await BasariUtilities().getApiSonuc(
         parametreler, MyApp.apiUrl + "apitumtalepler/MusteriKodBilgileri");
     if (sn.basarili) {

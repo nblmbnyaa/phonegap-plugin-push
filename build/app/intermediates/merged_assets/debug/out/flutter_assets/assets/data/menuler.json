@@ -129,7 +129,7 @@
     },
     {
         "menuno": 132002,
-        "viewname": "vwtalepkarti",
+        "viewname": "/132002",
         "baslik": "Talep Kartı",
         "paneladi": "crm",
         "ozelmenu": true

@@ -928,6 +928,10 @@
         "source": "C:\\Users\\kamilbektas\\.gradle\\caches\\transforms-2\\files-2.1\\701c33591765b03ec8ed51d702bd262d\\appcompat-1.1.0\\res\\drawable-xxhdpi-v4\\abc_list_pressed_holo_light.9.png"
     },
     {
+        "merged": "C:\\BasariliProjeler\\prosis_mobile\\build\\app\\intermediates\\res\\merged\\debug\\xml_flutter_image_picker_file_paths.xml.flat",
+        "source": "C:\\BasariliProjeler\\prosis_mobile\\build\\image_picker\\intermediates\\packaged_res\\debug\\xml\\flutter_image_picker_file_paths.xml"
+    },
+    {
         "merged": "C:\\BasariliProjeler\\prosis_mobile\\build\\app\\intermediates\\res\\merged\\debug\\color_mtrl_chip_text_color.xml.flat",
         "source": "C:\\Users\\kamilbektas\\.gradle\\caches\\transforms-2\\files-2.1\\74836238f8985b95b9be999c7611f26b\\material-1.1.0\\res\\color\\mtrl_chip_text_color.xml"
     },

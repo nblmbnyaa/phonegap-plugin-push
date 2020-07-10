@@ -5,13 +5,16 @@ INJECTED from C:\BasariliProjeler\prosis_mobile\android\app\src\main\AndroidMani
 INJECTED from C:\BasariliProjeler\prosis_mobile\android\app\src\main\AndroidManifest.xml:1:1-52:12
 INJECTED from C:\BasariliProjeler\prosis_mobile\android\app\src\main\AndroidManifest.xml:1:1-52:12
 MERGED from C:\BasariliProjeler\prosis_mobile\android\app\src\main\AndroidManifest.xml:1:1-52:12
-MERGED from [:firebase_messaging] C:\BasariliProjeler\prosis_mobile\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-20:12
 MERGED from [:fluttertoast] C:\BasariliProjeler\prosis_mobile\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:barcode_scan] C:\BasariliProjeler\prosis_mobile\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-13:12
-MERGED from [:shared_preferences] C:\BasariliProjeler\prosis_mobile\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:image_picker] C:\BasariliProjeler\prosis_mobile\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-22:12
+MERGED from [:flutter_plugin_android_lifecycle] C:\BasariliProjeler\prosis_mobile\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:firebase_messaging] C:\BasariliProjeler\prosis_mobile\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-20:12
 MERGED from [:url_launcher] C:\BasariliProjeler\prosis_mobile\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
+MERGED from [:webview_flutter] C:\BasariliProjeler\prosis_mobile\build\webview_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:path_provider] C:\BasariliProjeler\prosis_mobile\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:shared_preferences] C:\BasariliProjeler\prosis_mobile\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:url_launcher_web] C:\BasariliProjeler\prosis_mobile\build\url_launcher_web\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:barcode_scan] C:\BasariliProjeler\prosis_mobile\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-13:12
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\2a70ee504bd32b1bd949b6dd58d86852\firebase-analytics-17.2.2\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\74836238f8985b95b9be999c7611f26b\material-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\701c33591765b03ec8ed51d702bd262d\appcompat-1.1.0\AndroidManifest.xml:17:1-24:12
@@ -36,6 +39,7 @@ MERGED from [me.dm7.barcodescanner:zxing:1.9.13] C:\Users\kamilbektas\.gradle\ca
 MERGED from [me.dm7.barcodescanner:core:1.9.13] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\8b3f8f4761c6cb4fa36a14512c3b8d7e\jetified-core-1.9.13\AndroidManifest.xml:2:1-13:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\fb1e5d35f9738a7c29a273d7be7f3e2c\legacy-support-v4-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\0d479d426be2ba1f4bdfee2f9a7aa519\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.webkit:webkit:1.0.0] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\3af8640ce562b4b4e0a6111579ef27f6\webkit-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\536c4d230adcf87aec8f00c8955f8127\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\4881302d1430cfdcaa10344523e2ce7f\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\d10fe1176fa5480b064486ece15f99c1\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -87,12 +91,14 @@ INJECTED from C:\BasariliProjeler\prosis_mobile\android\app\src\debug\AndroidMan
 		ADDED from C:\BasariliProjeler\prosis_mobile\android\app\src\main\AndroidManifest.xml:1:11-69
 application
 ADDED from C:\BasariliProjeler\prosis_mobile\android\app\src\main\AndroidManifest.xml:8:5-51:19
+MERGED from [:image_picker] C:\BasariliProjeler\prosis_mobile\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-20:19
+MERGED from [:image_picker] C:\BasariliProjeler\prosis_mobile\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-20:19
 MERGED from [:firebase_messaging] C:\BasariliProjeler\prosis_mobile\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-18:19
 MERGED from [:firebase_messaging] C:\BasariliProjeler\prosis_mobile\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-18:19
-MERGED from [:barcode_scan] C:\BasariliProjeler\prosis_mobile\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-11:19
-MERGED from [:barcode_scan] C:\BasariliProjeler\prosis_mobile\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-11:19
 MERGED from [:url_launcher] C:\BasariliProjeler\prosis_mobile\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
 MERGED from [:url_launcher] C:\BasariliProjeler\prosis_mobile\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
+MERGED from [:barcode_scan] C:\BasariliProjeler\prosis_mobile\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-11:19
+MERGED from [:barcode_scan] C:\BasariliProjeler\prosis_mobile\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-11:19
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\2a70ee504bd32b1bd949b6dd58d86852\firebase-analytics-17.2.2\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\2a70ee504bd32b1bd949b6dd58d86852\firebase-analytics-17.2.2\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\74836238f8985b95b9be999c7611f26b\material-1.1.0\AndroidManifest.xml:22:5-20
@@ -199,20 +205,26 @@ uses-sdk
 INJECTED from C:\BasariliProjeler\prosis_mobile\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\BasariliProjeler\prosis_mobile\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\BasariliProjeler\prosis_mobile\android\app\src\main\AndroidManifest.xml
-MERGED from [:firebase_messaging] C:\BasariliProjeler\prosis_mobile\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:firebase_messaging] C:\BasariliProjeler\prosis_mobile\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:fluttertoast] C:\BasariliProjeler\prosis_mobile\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:fluttertoast] C:\BasariliProjeler\prosis_mobile\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:barcode_scan] C:\BasariliProjeler\prosis_mobile\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:barcode_scan] C:\BasariliProjeler\prosis_mobile\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:shared_preferences] C:\BasariliProjeler\prosis_mobile\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:shared_preferences] C:\BasariliProjeler\prosis_mobile\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:image_picker] C:\BasariliProjeler\prosis_mobile\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:image_picker] C:\BasariliProjeler\prosis_mobile\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] C:\BasariliProjeler\prosis_mobile\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] C:\BasariliProjeler\prosis_mobile\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_messaging] C:\BasariliProjeler\prosis_mobile\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_messaging] C:\BasariliProjeler\prosis_mobile\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:url_launcher] C:\BasariliProjeler\prosis_mobile\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:url_launcher] C:\BasariliProjeler\prosis_mobile\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:webview_flutter] C:\BasariliProjeler\prosis_mobile\build\webview_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:webview_flutter] C:\BasariliProjeler\prosis_mobile\build\webview_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider] C:\BasariliProjeler\prosis_mobile\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider] C:\BasariliProjeler\prosis_mobile\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] C:\BasariliProjeler\prosis_mobile\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] C:\BasariliProjeler\prosis_mobile\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:url_launcher_web] C:\BasariliProjeler\prosis_mobile\build\url_launcher_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:url_launcher_web] C:\BasariliProjeler\prosis_mobile\build\url_launcher_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:barcode_scan] C:\BasariliProjeler\prosis_mobile\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:barcode_scan] C:\BasariliProjeler\prosis_mobile\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\2a70ee504bd32b1bd949b6dd58d86852\firebase-analytics-17.2.2\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\2a70ee504bd32b1bd949b6dd58d86852\firebase-analytics-17.2.2\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\74836238f8985b95b9be999c7611f26b\material-1.1.0\AndroidManifest.xml:20:5-44
@@ -261,6 +273,8 @@ MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\kamilbektas\.grad
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\fb1e5d35f9738a7c29a273d7be7f3e2c\legacy-support-v4-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\0d479d426be2ba1f4bdfee2f9a7aa519\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\0d479d426be2ba1f4bdfee2f9a7aa519\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.webkit:webkit:1.0.0] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\3af8640ce562b4b4e0a6111579ef27f6\webkit-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.webkit:webkit:1.0.0] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\3af8640ce562b4b4e0a6111579ef27f6\webkit-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\536c4d230adcf87aec8f00c8955f8127\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\536c4d230adcf87aec8f00c8955f8127\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\4881302d1430cfdcaa10344523e2ce7f\viewpager-1.0.0\AndroidManifest.xml:20:5-44
@@ -347,6 +361,30 @@ MERGED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\kamilbektas\.grad
 MERGED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\f26cdfb5f8d69cbc9663543f3ec1de65\firebase-iid-20.0.2\AndroidManifest.xml:23:5-67
 	android:name
 		ADDED from C:\BasariliProjeler\prosis_mobile\android\app\src\debug\AndroidManifest.xml:6:22-64
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from [:image_picker] C:\BasariliProjeler\prosis_mobile\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-80
+	android:name
+		ADDED from [:image_picker] C:\BasariliProjeler\prosis_mobile\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from [:image_picker] C:\BasariliProjeler\prosis_mobile\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-81
+	android:name
+		ADDED from [:image_picker] C:\BasariliProjeler\prosis_mobile\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:8:22-78
+provider#io.flutter.plugins.imagepicker.ImagePickerFileProvider
+ADDED from [:image_picker] C:\BasariliProjeler\prosis_mobile\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:11:9-19:20
+	android:grantUriPermissions
+		ADDED from [:image_picker] C:\BasariliProjeler\prosis_mobile\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-47
+	android:authorities
+		ADDED from [:image_picker] C:\BasariliProjeler\prosis_mobile\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-74
+	android:exported
+		ADDED from [:image_picker] C:\BasariliProjeler\prosis_mobile\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-37
+	android:name
+		ADDED from [:image_picker] C:\BasariliProjeler\prosis_mobile\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-82
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:image_picker] C:\BasariliProjeler\prosis_mobile\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-18:75
+	android:resource
+		ADDED from [:image_picker] C:\BasariliProjeler\prosis_mobile\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-72
+	android:name
+		ADDED from [:image_picker] C:\BasariliProjeler\prosis_mobile\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:17:17-67
 service#io.flutter.plugins.firebasemessaging.FlutterFirebaseMessagingService
 ADDED from [:firebase_messaging] C:\BasariliProjeler\prosis_mobile\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
 	android:name
@@ -379,14 +417,6 @@ ADDED from [:firebase_messaging] C:\BasariliProjeler\prosis_mobile\build\firebas
 		ADDED from [:firebase_messaging] C:\BasariliProjeler\prosis_mobile\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:16:17-82
 	android:name
 		ADDED from [:firebase_messaging] C:\BasariliProjeler\prosis_mobile\build\firebase_messaging\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-127
-uses-permission#android.permission.CAMERA
-ADDED from [:barcode_scan] C:\BasariliProjeler\prosis_mobile\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-65
-	android:name
-		ADDED from [:barcode_scan] C:\BasariliProjeler\prosis_mobile\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-62
-activity#de.mintware.barcode_scan.BarcodeScannerActivity
-ADDED from [:barcode_scan] C:\BasariliProjeler\prosis_mobile\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:10:9-84
-	android:name
-		ADDED from [:barcode_scan] C:\BasariliProjeler\prosis_mobile\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:10:19-81
 activity#io.flutter.plugins.urllauncher.WebViewActivity
 ADDED from [:url_launcher] C:\BasariliProjeler\prosis_mobile\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-11:74
 	android:exported
@@ -395,6 +425,14 @@ ADDED from [:url_launcher] C:\BasariliProjeler\prosis_mobile\build\url_launcher\
 		ADDED from [:url_launcher] C:\BasariliProjeler\prosis_mobile\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-71
 	android:name
 		ADDED from [:url_launcher] C:\BasariliProjeler\prosis_mobile\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-74
+uses-permission#android.permission.CAMERA
+ADDED from [:barcode_scan] C:\BasariliProjeler\prosis_mobile\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-65
+	android:name
+		ADDED from [:barcode_scan] C:\BasariliProjeler\prosis_mobile\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-62
+activity#de.mintware.barcode_scan.BarcodeScannerActivity
+ADDED from [:barcode_scan] C:\BasariliProjeler\prosis_mobile\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:10:9-84
+	android:name
+		ADDED from [:barcode_scan] C:\BasariliProjeler\prosis_mobile\build\barcode_scan\intermediates\library_manifest\debug\AndroidManifest.xml:10:19-81
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\a2d3f38d709f8b9f54c2677fdca8f29a\play-services-measurement-17.2.2\AndroidManifest.xml:24:5-79
 MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\kamilbektas\.gradle\caches\transforms-2\files-2.1\ca912bff2260618b5b638fe661521702\play-services-measurement-api-17.2.2\AndroidManifest.xml:23:5-79

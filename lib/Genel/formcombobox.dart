@@ -42,15 +42,15 @@ class FormComboboxState extends State<FormCombobox> {
                     child: Padding(
                       padding: EdgeInsets.only(left: 5, right: 5),
                       child: DropdownButton<GenelEnum>(
-                        isDense: true,
-                        icon: Icon(Icons.arrow_downward),
+                        isDense: false,
+                        //icon: Icon(Icons.arrow_downward),
                         iconSize: 24,
                         elevation: 16,
-                        style: TextStyle(color: Colors.deepPurple),
-                        underline: Container(
-                          height: 2,
-                          color: Colors.deepPurpleAccent,
-                        ),
+                        //style: TextStyle(color: Colors.deepPurple),
+                        // underline: Container(
+                        //   height: 2,
+                        //   color: Colors.deepPurpleAccent,
+                        // ),
                         items: widget.datasource.map((e) {
                           return DropdownMenuItem<GenelEnum>(
                               value: e, child: Text(e.adi));
