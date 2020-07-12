@@ -8,7 +8,7 @@ import 'package:prosis_mobile/Genel/formtextaramali.dart';
 import 'package:prosis_mobile/Genel/formtextaramasiz.dart';
 import 'package:prosis_mobile/Genel/mesajlar.dart';
 import 'package:intl/intl.dart' as intl;
-import 'package:html_editor/html_editor.dart';
+import 'package:prosis_mobile/Sayfalar/Crm/talepcevap.dart';
 
 import '../../main.dart';
 
@@ -49,10 +49,12 @@ class TalepKartiState extends State<TalepKarti> {
   TextEditingController txtSabitTel = TextEditingController();
   TextEditingController txtKonu = TextEditingController();
   String mesaj = "";
+  String atayadaiptalismi = "Bana Ata";
+  List<String> islemler = [];
 
   void talepDoldur() async {
     if (BasariUtilities().tamsayi(txttalepno.text) == 0)
-      txttalepno.text = "38370";
+      txttalepno.text = "38446";
 
     List<String> parametreler = new List<String>();
     parametreler.add(JsonEncoder().convert(MyApp.oturum));
@@ -64,9 +66,12 @@ class TalepKartiState extends State<TalepKarti> {
         parametreler, MyApp.apiUrl + "apitumtalepler/TalepBilgileri");
     if (sn.basarili) {
       var gelen = json.decode(sn.sonuc);
-      txtAcilisZamani.text =
-          intl.DateFormat("dd.MM.yyyy HH:mm").format(DateTime.parse(gelen["AcilisZamani"]));
-      durumu = durumlar.where((element) => element.no ==int.parse(gelen["Durumu"].toString())).first;
+      txtAcilisZamani.text = intl.DateFormat("dd.MM.yyyy HH:mm")
+          .format(DateTime.parse(gelen["AcilisZamani"]));
+      durumu = durumlar
+          .where(
+              (element) => element.no == int.parse(gelen["Durumu"].toString()))
+          .first;
       oncelik =
           oncelikler.where((element) => element.no == gelen["Oncelik"]).first;
       destekSekli = destekSekilleri
@@ -88,6 +93,19 @@ class TalepKartiState extends State<TalepKarti> {
       txtSabitTel.text = gelen["SabitTel"];
       txtKonu.text = gelen["Konu"];
       mesaj = gelen["Mesaj"];
+      islemler.clear();
+      islemler.add("Yeni");
+      islemler.add("Kaydet");
+      if (txtSahibi.text == MyApp.oturum.kullanicikodu) {
+        atayadaiptalismi = "Atama İptal";
+      } else {
+        atayadaiptalismi = "Bana Ata";
+      }
+      islemler.add(atayadaiptalismi);
+      islemler.add("Cevap Ekle");
+    }
+    else{
+      Mesajlar().tamam(context, Text(sn.sonuc), Text("Uyarı"));
     }
     setState(() {});
   }
@@ -211,9 +229,9 @@ class TalepKartiState extends State<TalepKarti> {
   void musteriGetir() async {
     List<String> parametreler = new List<String>();
     parametreler.add(JsonEncoder().convert(MyApp.oturum));
-    Map<String,dynamic> prm={
-      "musterikodu":txtMusteriKodu.text,
-      "musteriunvani":txtMusteriAdi.text
+    Map<String, dynamic> prm = {
+      "musterikodu": txtMusteriKodu.text,
+      "musteriunvani": txtMusteriAdi.text
     };
     parametreler.add(jsonEncode(prm));
     DefaultReturn sn = await BasariUtilities().getApiSonuc(
@@ -277,6 +295,143 @@ class TalepKartiState extends State<TalepKarti> {
         ));
   }
 
+  void cevapEkle() async {
+    final result = await Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => TalepCevap(
+              talepNo: BasariUtilities().tamsayi(txttalepno.text),
+              mesaj: "",
+              sadeceMesaj: false,
+            )));
+    mesaj = result;
+    if (mesaj == "Cevap Eklendi") talepDoldur();
+    if(mesaj == "Çözüldü")
+    {
+      Navigator.pop(context);
+    }
+  }
+
+  void yeni() async {
+    Future<bool> cevap = Mesajlar().yesno(
+            context,
+            Text("Yeni evrak açmak istediğinizden emin misiniz?"),
+            Text("Uyarı"),
+            "Evet",
+            "Hayır") ??
+        false;
+    cevap.then((value) {
+      if (value) {
+        txttalepno.text = "";
+        txtAcilisZamani.text =
+            intl.DateFormat("dd.MM.yyyy HH:mm").format(DateTime.now());
+        durumu = durumlar.first;
+        oncelik = oncelikler.first;
+        destekCinsi = destekCinsleri.first;
+        departman = departmanlar.first;
+        txtSahibi.text = "";
+        txtIlgili.text = "";
+        txtMusteriKodu.text = "";
+        txtMusteriAdi.text = "";
+        txtYetkili.text = "";
+        txtEPosta.text = "";
+        txtCepTel.text = "";
+        txtSabitTel.text = "";
+        txtKonu.text = "";
+        mesaj = "";
+        islemler.clear();
+        islemler.add("Yeni");
+        islemler.add("Kaydet");
+        islemler.add("Mesaj Ekle");
+        setState(() {});
+      }
+    });
+  }
+
+  void kaydet() async {
+    List<String> parametreler = new List<String>();
+    parametreler.add(JsonEncoder().convert(MyApp.oturum));
+    Map<String, dynamic> talepbilgileri = {
+      "TalepNo": BasariUtilities().tamsayi(txttalepno.text),
+      "AcilisZamani": DateTime.now().toIso8601String(),
+      "Durumu": durumu.no,
+      "Oncelik": oncelik.no,
+      "DestekSekli": destekSekli.no,
+      "DestekCinsi": destekCinsi.no,
+      "Departmani": departman.no,
+      "Sahibi": txtSahibi.text,
+      "Ilgili": txtIlgili.text,
+      "MusKod": txtMusteriKodu.text,
+      "MusUnvan": txtMusteriAdi.text,
+      "Yetkili": txtYetkili.text,
+      "Eposta": txtEPosta.text,
+      "CepTel": txtCepTel.text,
+      "SabitTel": txtSabitTel.text,
+      "Konu": txtKonu.text,
+      "Mesaj": mesaj
+    };
+    parametreler.add(jsonEncode(talepbilgileri));
+    DefaultReturn sn = await BasariUtilities()
+        .getApiSonuc(parametreler, MyApp.apiUrl + "apitumtalepler/TalepKaydet");
+    if (sn.basarili) {
+      Mesajlar().tamam(context, Text("Talep kaydedildi"), Text("Bilgi"));
+      txttalepno.text = sn.sonuc;
+      talepDoldur();
+    } else {
+      Mesajlar().tamam(context, Text(sn.sonuc), Text("Uyarı"));
+    }
+    setState(() {});
+  }
+
+  void atayadaIptal() async {
+    if (BasariUtilities().tamsayi(txttalepno.text) == 0) {
+      Mesajlar()
+          .tamam(context, Text("Önce talebi kaydetmelisiniz"), Text("Uyarı"));
+      return;
+    }
+    List<String> parametreler = new List<String>();
+    parametreler.add(JsonEncoder().convert(MyApp.oturum));
+    Map<String, dynamic> talepbilgileri = {
+      "TalepNo": BasariUtilities().tamsayi(txttalepno.text),
+      // "AcilisZamani": DateTime.now().toIso8601String(),
+      // "Durumu": durumu.no,
+      // "Oncelik": oncelik.no,
+      // "DestekSekli": destekSekli.no,
+      // "DestekCinsi": destekCinsi.no,
+      // "Departmani": departman.no,
+      // "Sahibi": txtSahibi.text,
+      // "Ilgili": txtIlgili.text,
+      // "MusKod": txtMusteriKodu.text,
+      // "MusUnvan": txtMusteriAdi.text,
+      // "Yetkili": txtYetkili.text,
+      // "Eposta": txtEPosta.text,
+      // "CepTel": txtCepTel.text,
+      // "SabitTel": txtSabitTel.text,
+      // "Konu": txtKonu.text,
+      // "Mesaj": mesaj
+    };
+    parametreler.add(jsonEncode(talepbilgileri));
+    String url = "";
+    if (atayadaiptalismi == "Bana Ata") {
+      url = MyApp.apiUrl + "apitumtalepler/BanaAta";
+    } else {
+      url = MyApp.apiUrl + "apitumtalepler/AtamaIptal";
+    }
+    DefaultReturn sn = await BasariUtilities().getApiSonuc(parametreler, url);
+    if (sn.basarili) {
+      talepDoldur();
+    } else {
+      Mesajlar().tamam(context, Text(sn.sonuc), Text("Uyarı"));
+    }
+  }
+
+  void mesajGoster() async {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => TalepCevap(
+              talepNo: BasariUtilities().tamsayi(txttalepno.text),
+              mesaj: mesaj,
+              sadeceMesaj: true,
+            )));
+  }
+
   onLoad() {
     durumlar.add(GenelEnum(no: 0, adi: "Yeni"));
     durumlar.add(GenelEnum(no: 1, adi: "Başlandı"));
@@ -315,6 +470,20 @@ class TalepKartiState extends State<TalepKarti> {
     departmanlar.add(GenelEnum(no: 8, adi: "Planlama"));
   }
 
+  void islemYap(String islem) {
+    if (islem == "Yeni") {
+      yeni();
+    } else if (islem == "Kaydet") {
+      kaydet();
+    } else if (islem == "Atama İptal" || islem == "Bana Ata") {
+      atayadaIptal();
+    } else if (islem == "Cevap Ekle") {
+      cevapEkle();
+    } else if (islem == "Mesaj Ekle") {
+      cevapEkle();
+    }
+  }
+
   @override
   void initState() {
     onLoad();
@@ -330,132 +499,195 @@ class TalepKartiState extends State<TalepKarti> {
       child: Scaffold(
         appBar: AppBar(
           title: Text("Talep Kartı"),
+          actions: <Widget>[
+            Padding(
+                padding: EdgeInsets.only(right: 20.0),
+                child: GestureDetector(
+                  onTap: mesajGoster,
+                  child: Icon(
+                    Icons.message,
+                    size: 26.0,
+                  ),
+                )),
+            PopupMenuButton<String>(
+                onSelected: islemYap,
+                itemBuilder: (BuildContext context) {
+                  return islemler.map((String e) {
+                    return PopupMenuItem<String>(
+                      child: Text(e),
+                      value: e,
+                    );
+                  }).toList();
+                }),
+          ],
         ),
         body: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            children: <Widget>[
-              FormTextAramasiz(
-                txtkod: txttalepno,
-                labelicerik: "Talep No",
-                onKeyDown: talepDoldur,
-                readonly: true,
-                isPassword: false,
-              ),
-              FormTextAramasiz(
-                isPassword: false,
-                labelicerik: "Açılış Zamanı",
-                readonly: true,
-                txtkod: txtAcilisZamani,
-              ),
-              FormCombobox(
-                datasource: durumlar,
-                labelicerik: "Durumu",
-                readonly: false,
-                selectedValue: durumu,
-                setGenelEnum: (GenelEnum ge) {
-                  setState(() {
-                    durumu = ge;
-                  });
-                },
-              ),
-              FormCombobox(
-                datasource: oncelikler,
-                labelicerik: "Öncelik",
-                readonly: false,
-                selectedValue: oncelik,
-                setGenelEnum: (GenelEnum ge) {
-                  setState(() {
-                    oncelik = ge;
-                  });
-                },
-              ),
-              FormCombobox(
-                datasource: destekSekilleri,
-                labelicerik: "Destek Şekli",
-                readonly: false,
-                selectedValue: destekSekli,
-                setGenelEnum: (GenelEnum ge) {
-                  setState(() {
-                    destekSekli = ge;
-                  });
-                },
-              ),
-              FormCombobox(
-                datasource: destekCinsleri,
-                labelicerik: "Destek Cinsi",
-                readonly: false,
-                selectedValue: destekCinsi,
-                setGenelEnum: (GenelEnum ge) {
-                  setState(() {
-                    destekCinsi = ge;
-                  });
-                },
-              ),
-              FormCombobox(
-                datasource: departmanlar,
-                labelicerik: "Departman",
-                readonly: false,
-                selectedValue: departman,
-                setGenelEnum: (GenelEnum ge) {
-                  setState(() {
-                    departman = ge;
-                  });
-                },
-              ),
-              FormTextAramasiz(
-                isPassword: false,
-                labelicerik: "Sahibi",
-                readonly: true,
-                txtkod: txtSahibi,
-              ),
-              FormTextAramali(
-                buttonVisible: true,
-                labelicerik: "İlgili Kişi",
-                onPressedAra: ilgiliAra,
-                readOnly: true,
-                txtkod: txtIlgili,
-              ),
-              FormTextAramali(
-                buttonVisible: true,
-                labelicerik: "Müşteri Kodu",
-                onKeyDown: musteriGetir,
-                onPressedAra: musteriKoduAra,
-                readOnly: false,
-                txtkod: txtMusteriKodu,
-              ),
-              FormTextAramali(
-                buttonVisible: true,
-                labelicerik: "Müşteri Adı",
-                onPressedAra: musteriAdiAra,
-                readOnly: false,
-                txtkod: txtMusteriAdi,
-              ),
-              FormTextAramali(
-                buttonVisible: true,
-                labelicerik: "Yetkili",
-                onPressedAra: yetkiliAra,
-                readOnly: true,
-                txtkod: txtYetkili,
-              ),
-              FormTextAramasiz(
-                isPassword: false,
-                labelicerik: "E Posta Adr",
-                readonly: false,
-                txtkod: txtEPosta,
-              ),
-              FormTextAramasiz(
-                isPassword: false,
-                labelicerik: "Cep Tel",
-                readonly: false,
-                txtkod: txtCepTel,
-              ),
-              HtmlEditor(value: mesaj),
-            ],
-          ),
-        ),
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: <Widget>[
+                SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    children: <Widget>[
+                      FormTextAramasiz(
+                        txtkod: txttalepno,
+                        labelicerik: "Talep No",
+                        onKeyDown: talepDoldur,
+                        readonly: true,
+                        isPassword: false,
+                      ),
+                      FormTextAramasiz(
+                        isPassword: false,
+                        labelicerik: "Açılış Zamanı",
+                        readonly: true,
+                        txtkod: txtAcilisZamani,
+                      ),
+                      FormCombobox(
+                        datasource: durumlar,
+                        labelicerik: "Durumu",
+                        readonly: false,
+                        selectedValue: durumu,
+                        setGenelEnum: (GenelEnum ge) {
+                          setState(() {
+                            durumu = ge;
+                          });
+                        },
+                      ),
+                      FormCombobox(
+                        datasource: oncelikler,
+                        labelicerik: "Öncelik",
+                        readonly: false,
+                        selectedValue: oncelik,
+                        setGenelEnum: (GenelEnum ge) {
+                          setState(() {
+                            oncelik = ge;
+                          });
+                        },
+                      ),
+                      FormCombobox(
+                        datasource: destekSekilleri,
+                        labelicerik: "Destek Şekli",
+                        readonly: false,
+                        selectedValue: destekSekli,
+                        setGenelEnum: (GenelEnum ge) {
+                          setState(() {
+                            destekSekli = ge;
+                          });
+                        },
+                      ),
+                      FormCombobox(
+                        datasource: destekCinsleri,
+                        labelicerik: "Destek Cinsi",
+                        readonly: false,
+                        selectedValue: destekCinsi,
+                        setGenelEnum: (GenelEnum ge) {
+                          setState(() {
+                            destekCinsi = ge;
+                          });
+                        },
+                      ),
+                      FormCombobox(
+                        datasource: departmanlar,
+                        labelicerik: "Departman",
+                        readonly: false,
+                        selectedValue: departman,
+                        setGenelEnum: (GenelEnum ge) {
+                          setState(() {
+                            departman = ge;
+                          });
+                        },
+                      ),
+                      FormTextAramasiz(
+                        isPassword: false,
+                        labelicerik: "Sahibi",
+                        readonly: true,
+                        txtkod: txtSahibi,
+                      ),
+                      FormTextAramali(
+                        buttonVisible: true,
+                        labelicerik: "İlgili Kişi",
+                        onPressedAra: ilgiliAra,
+                        readOnly: true,
+                        txtkod: txtIlgili,
+                      ),
+                      FormTextAramali(
+                        buttonVisible: true,
+                        labelicerik: "Müşteri Kodu",
+                        onKeyDown: musteriGetir,
+                        onPressedAra: musteriKoduAra,
+                        readOnly: false,
+                        txtkod: txtMusteriKodu,
+                      ),
+                      FormTextAramali(
+                        buttonVisible: true,
+                        labelicerik: "Müşteri Adı",
+                        onPressedAra: musteriAdiAra,
+                        readOnly: false,
+                        txtkod: txtMusteriAdi,
+                      ),
+                      FormTextAramali(
+                        buttonVisible: true,
+                        labelicerik: "Yetkili",
+                        onPressedAra: yetkiliAra,
+                        readOnly: true,
+                        txtkod: txtYetkili,
+                      ),
+                      FormTextAramasiz(
+                        isPassword: false,
+                        labelicerik: "E Posta Adr",
+                        readonly: false,
+                        txtkod: txtEPosta,
+                      ),
+                      FormTextAramasiz(
+                        isPassword: false,
+                        labelicerik: "Cep Tel",
+                        readonly: false,
+                        txtkod: txtCepTel,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            )),
+        // floatingActionButton: FloatingActionButton(
+        //   onPressed: cevapEkle,
+        //   child: Text("Cevapla"),
+        //   backgroundColor: Colors.orangeAccent,
+        // ),
+
+        // bottomNavigationBar: BottomAppBar(
+        //   color: Colors.amber,
+        //   child: new Row(
+        //     mainAxisSize: MainAxisSize.max,
+        //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+        //     children: <Widget>[
+        //       FlatButton(
+        //         child: Text("Yeni"),
+        //         onPressed: yeni,
+        //       ),
+        //       FlatButton(onPressed: kaydet, child: Text("Kaydet")),
+        //       FlatButton(
+        //           onPressed: atayadaIptal, child: Text(atayadaiptalismi)),
+        //       FlatButton(onPressed: cevapEkle, child: Text("Cevapla"))
+        //     ],
+        //   ),
+        // ),
       ),
       onWillPop: () => Mesajlar().backPressed(context),
     );
   }
+}
+
+class TalepIslemleri {
+  static const String yeni = "Yeni";
+  static const String kaydet = "Kaydet";
+  static const String atama = "Bana Ata";
+  static const String cevapla = "Cevapla";
+
+  static const List<String> islemler = <String>[
+    yeni,
+    kaydet,
+    atama,
+    cevapla,
+  ];
 }
