@@ -37,7 +37,7 @@ class PageGirisAyarlariState extends State<PageGirisAyarlari> {
     }
 
     DefaultReturn sn = await BasariUtilities()
-        .getApiSonuc(parametreler, txtApiUrl.text + "apisistem/Test");
+        .getApiSonuc(parametreler, txtApiUrl.text + "apisistem/Test", context);
     if (sn.basarili) {
       Mesajlar().tamam(context, Text("Başarılı"), Text("Bağlantı Testi"));
     } else {
@@ -90,51 +90,52 @@ class PageGirisAyarlariState extends State<PageGirisAyarlari> {
       body: Center(
           child: Padding(
         padding: EdgeInsets.all(5),
-        child:SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            FormTextAramasiz(
-              labelicerik: "Api Url",
-              txtkod: txtApiUrl,
-            ),
-            FormTextAramasiz(
-              labelicerik: "Api Şifresi",
-              txtkod: txtApiSifre,
-              isPassword: true,
-            ),
-            FormCiftButton(
-button1flex: 4,
-button1islem: baglantiTesti,
-button1icerik: "Bağlantı Testi",
-button1renk: Colors.orange[300],
-button2flex: 4,
-button2icerik: "Kaydet",
-button2islem: kaydet,
-button2renk: Colors.green[300],
-            ),
-            
-            RichText(
-              textAlign: TextAlign.left,
-              text: TextSpan(style: TextStyle(color: Colors.black), children: [
-                TextSpan(
-                    text:
-                        "\n\nProgramımız API aracılığı ile çalışmaktadır.\nUygulamayı denemek için 'Bağlantı Bilgileri' ni boş bırakınız.\nAPI'nin sunucunuza yüklenmesi için "),
-                LinkTextSpan(
-                    style: TextStyle(
-                        color: Colors.blue,
-                        decoration: TextDecoration.underline),
-                    url: "tel:08502021422",
-                    text: "0850 202 14 22"),
-                TextSpan(
-                    text:
-                        " numaralı telefondan bizimle irtibata geçebilirsiniz."),
-              ]),
-            ),
-          ],
-        )),
+        child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                FormTextAramasiz(
+                  labelicerik: "Api Url",
+                  txtkod: txtApiUrl,
+                ),
+                FormTextAramasiz(
+                  labelicerik: "Api Şifresi",
+                  txtkod: txtApiSifre,
+                  isPassword: true,
+                ),
+                FormCiftButton(
+                  button1flex: 4,
+                  button1islem: baglantiTesti,
+                  button1icerik: "Bağlantı Testi",
+                  button1renk: Colors.orange[300],
+                  button2flex: 4,
+                  button2icerik: "Kaydet",
+                  button2islem: kaydet,
+                  button2renk: Colors.green[300],
+                ),
+                RichText(
+                  textAlign: TextAlign.left,
+                  text: TextSpan(
+                      style: TextStyle(color: Colors.black),
+                      children: [
+                        TextSpan(
+                            text:
+                                "\n\nProgramımız API aracılığı ile çalışmaktadır.\nUygulamayı denemek için 'Bağlantı Bilgileri' ni boş bırakınız.\nAPI'nin sunucunuza yüklenmesi için "),
+                        LinkTextSpan(
+                            style: TextStyle(
+                                color: Colors.blue,
+                                decoration: TextDecoration.underline),
+                            url: "tel:08502021422",
+                            text: "0850 202 14 22"),
+                        TextSpan(
+                            text:
+                                " numaralı telefondan bizimle irtibata geçebilirsiniz."),
+                      ]),
+                ),
+              ],
+            )),
       )),
     );
   }

@@ -143,14 +143,14 @@
     },
     {
         "menuno": 132006,
-        "viewname": "vwtumbekleyenler",
+        "viewname": "/132006",
         "baslik": "Başkasında Bekleyenler",
         "paneladi": "crm",
         "ozelmenu": true
     },
     {
         "menuno": 132007,
-        "viewname": "vwbendebekleyenler",
+        "viewname": "/132007",
         "baslik": "Bende Bekleyenler",
         "paneladi": "crm",
         "ozelmenu": true

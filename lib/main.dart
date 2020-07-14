@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:progress_dialog/progress_dialog.dart';
+import 'package:prosis_mobile/Sayfalar/Crm/baskasindaBekleyenler.dart';
+import 'package:prosis_mobile/Sayfalar/Crm/bendeBekleyenler.dart';
 import 'package:prosis_mobile/Sayfalar/Crm/talepkarti.dart';
 import 'package:prosis_mobile/Sayfalar/Evraklar/pagealinansiparis.dart';
 import 'package:prosis_mobile/Sayfalar/Raporlar/pageCariHesapEkstresi.dart';
@@ -40,9 +43,11 @@ void main() {
       "/201003": (context) => PageAlinanSiparis(),
       "/201006": (context) => PageSayim(),
       "/201005": (context) => PageCariHesapEkstresi(),
-      "/132002": (context) => TalepKarti(
+      "/132002": (context) => PageTalepKarti(
             talepNo: 0,
           ),
+      "/132006": (context) => PageCrmBaskasindaBekleyenler(),
+      "/132007": (context) => PageCrmBendeBekleyenler(),
     },
     //           locale: const Locale('de'), // change to locale you want. not all locales are supported
     // localizationsDelegates: [
@@ -57,4 +62,5 @@ class MyApp {
   static String apiUrl = "";
   static String apiSifre = "";
   static OturumBilgileri oturum = OturumBilgileri();
+  
 }

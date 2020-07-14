@@ -32,12 +32,12 @@ dependencies:
   path_provider: ^1.6.7
   http: ^0.12.1
   json_serializable: ^3.3.0
-  load: ^0.1.6
   url_launcher: ^5.4.10
   intl: ^0.16.1
   barcode_scan: ^3.0.1
   firebase_messaging: ^6.0.16
   html_editor: ^1.0.1
+  progress_dialog: ^1.2.4
 
 dev_dependencies:
   flutter_test:

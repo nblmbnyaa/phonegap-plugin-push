@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Mesajlar {
   Future<bool> tamam(BuildContext context, Text mesaj, Text baslik) {
@@ -25,6 +26,17 @@ class Mesajlar {
             ],
           );
         });
+  }
+
+  void toastMesaj(String mesaj)
+  {
+    Fluttertoast.showToast(
+                msg: mesaj,
+                toastLength: Toast.LENGTH_LONG,
+                gravity: ToastGravity.CENTER,
+                backgroundColor: Colors.blue[100],
+                textColor: Colors.black,
+                );
   }
 
   Future<bool> yesno(BuildContext context, Text mesaj, Text baslik,String truetext,String falsetext) {

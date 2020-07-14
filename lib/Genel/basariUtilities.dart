@@ -2,9 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:load/load.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 
 class BasariUtilities {
+  ProgressDialog pr;
+
   f10(BuildContext context, String baslik, Widget listView) async {
     return showDialog(
         context: context,
@@ -31,10 +33,24 @@ class BasariUtilities {
   }
 
   Future<DefaultReturn> getApiSonuc(
-      List<String> parametreler, String url) async {
-    showLoadingDialog();
+      List<String> parametreler, String url, BuildContext ctx) async {
+    // pr = ProgressDialog(
+    //   ctx,
+    //   type: ProgressDialogType.Normal,
+    //   textDirection: TextDirection.ltr,
+    //   isDismissible: false,
+    //   customBody: LinearProgressIndicator(
+    //     valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent),
+    //     backgroundColor: Colors.white,
+    //   ),
+    // );
+
+    DefaultReturn defaultReturn = DefaultReturn();
+    defaultReturn.basarili = false;
+    defaultReturn.sonuc = "";
 
     try {
+      // await pr.show();
       String params = JsonEncoder().convert(parametreler);
       final cevap = await http.post(url, headers: <String, String>{
         'Accept': 'application/json; charset=UTF-8',
@@ -42,27 +58,36 @@ class BasariUtilities {
         "": params,
       }).timeout(Duration(seconds: 10), onTimeout: () {
         return null;
+      }).catchError((onError) {
+        print(onError);
       });
 
-      hideLoadingDialog();
       if (cevap != null) {
         if (cevap.statusCode == 200) {
           var sn = DefaultReturn.fromJson(json.decode(cevap.body));
           if (sn.sonuc == "[]") {
-            sn.basarili = false;
-            sn.sonuc = "Veri yok";
+            defaultReturn.basarili = false;
+            defaultReturn.sonuc = "Veri yok";
+          } else {
+            defaultReturn.basarili = sn.basarili;
+            defaultReturn.sonuc = sn.sonuc;
           }
-          return sn;
         } else {
-          return new DefaultReturn(
-              basarili: false, sonuc: "Veriler Alınamadı ${cevap.statusCode}");
+          defaultReturn.sonuc = "Veriler Alınamadı ${cevap.statusCode}";
         }
       } else {
-        return new DefaultReturn(basarili: false, sonuc: "Zaman aşımı");
+        defaultReturn.sonuc = "Zaman aşımı";
       }
     } catch (ex) {
-      return new DefaultReturn(basarili: false, sonuc: "Veriler Alınamadı.");
+      defaultReturn.sonuc = "Veriler Alınamadı ${ex.toString()}";
     }
+    // Future.delayed(Duration(seconds: 1)).then((value) {
+    //      pr.hide().whenComplete(() {
+    //      // print(pr.isShowing());
+    //     });
+    //    });
+    //print(hide);
+    return defaultReturn;
   }
 
   double getdeci(var nesne) {

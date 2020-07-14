@@ -7,20 +7,20 @@ import 'package:prosis_mobile/Genel/mesajlar.dart';
 
 import '../../main.dart';
 
-class TalepCevap extends StatefulWidget {
+class PageTalepCevap extends StatefulWidget {
   final int talepNo;
   final String mesaj;
   bool sadeceMesaj;
 
-  TalepCevap({this.talepNo, this.mesaj, this.sadeceMesaj});
+  PageTalepCevap({this.talepNo, this.mesaj, this.sadeceMesaj});
 
   @override
   State<StatefulWidget> createState() {
-    return TalepCevapState();
+    return PageTalepCevapState();
   }
 }
 
-class TalepCevapState extends State<TalepCevap> {
+class PageTalepCevapState extends State<PageTalepCevap> {
   String cevap = "";
   GlobalKey<HtmlEditorState> keyEditor = GlobalKey();
   List<String> islemler = [];
@@ -35,15 +35,10 @@ class TalepCevapState extends State<TalepCevap> {
     };
     parametreler.add(jsonEncode(talepbilgileri));
     DefaultReturn sn = await BasariUtilities()
-        .getApiSonuc(parametreler, MyApp.apiUrl + "apitumtalepler/MesajKaydet");
+        .getApiSonuc(parametreler, MyApp.apiUrl + "apitumtalepler/MesajKaydet",context);
     if (sn.basarili) {
-      Future<bool> tamam = Mesajlar()
-          .tamam(context, Text("Mesajınız kaydedildi"), Text("Bilgi"));
-      tamam.then((value) {
-        if (value) {
-          Navigator.pop(context, "Cevap Eklendi");
-        }
-      });
+      Mesajlar().toastMesaj("Cevabınız kaydedildi");
+      Navigator.pop(context, "Cevap Eklendi");
     } else {
       Mesajlar().tamam(context, Text(sn.sonuc), Text("Uyarı"));
     }
@@ -59,15 +54,10 @@ class TalepCevapState extends State<TalepCevap> {
     };
     parametreler.add(jsonEncode(talepbilgileri));
     DefaultReturn sn = await BasariUtilities().getApiSonuc(
-        parametreler, MyApp.apiUrl + "apitumtalepler/MesajCozulduKaydet");
+        parametreler, MyApp.apiUrl + "apitumtalepler/MesajCozulduKaydet",context);
     if (sn.basarili) {
-      Future<bool> tamam = Mesajlar()
-          .tamam(context, Text("Çözüldü olarak kaydedildi"), Text("Bilgi"));
-      tamam.then((value) {
-        if (value) {
-          Navigator.pop(context, "Çözüldü");
-        }
-      });
+      Mesajlar().toastMesaj("Çözüldü olarak kaydedildi");
+      Navigator.pop(context, "Çözüldü");
     } else {
       Mesajlar().tamam(context, Text(sn.sonuc), Text("Uyarı"));
     }

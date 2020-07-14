@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 import 'package:prosis_mobile/Genel/basariUtilities.dart';
 import 'package:prosis_mobile/Genel/formcombobox.dart';
 import 'package:prosis_mobile/Genel/formtextaramali.dart';
@@ -12,20 +13,21 @@ import 'package:prosis_mobile/Sayfalar/Crm/talepcevap.dart';
 
 import '../../main.dart';
 
-class TalepKarti extends StatefulWidget {
+class PageTalepKarti extends StatefulWidget {
   final int talepNo;
 
-  TalepKarti({
+  PageTalepKarti({
     @required this.talepNo,
   });
 
   @override
   State<StatefulWidget> createState() {
-    return TalepKartiState();
+    return PageTalepKartiState();
   }
 }
 
-class TalepKartiState extends State<TalepKarti> {
+class PageTalepKartiState extends State<PageTalepKarti> {
+  ProgressDialog pr;
   TextEditingController txttalepno = TextEditingController();
   TextEditingController txtAcilisZamani = TextEditingController();
   List<GenelEnum> durumlar = [];
@@ -53,8 +55,7 @@ class TalepKartiState extends State<TalepKarti> {
   List<String> islemler = [];
 
   void talepDoldur() async {
-    if (BasariUtilities().tamsayi(txttalepno.text) == 0)
-      txttalepno.text = "38446";
+    if (BasariUtilities().tamsayi(txttalepno.text) == 0) return;
 
     List<String> parametreler = new List<String>();
     parametreler.add(JsonEncoder().convert(MyApp.oturum));
@@ -63,7 +64,7 @@ class TalepKartiState extends State<TalepKarti> {
     };
     parametreler.add(jsonEncode(talepbilgileri));
     DefaultReturn sn = await BasariUtilities().getApiSonuc(
-        parametreler, MyApp.apiUrl + "apitumtalepler/TalepBilgileri");
+        parametreler, MyApp.apiUrl + "apitumtalepler/TalepBilgileri", context);
     if (sn.basarili) {
       var gelen = json.decode(sn.sonuc);
       txtAcilisZamani.text = intl.DateFormat("dd.MM.yyyy HH:mm")
@@ -103,8 +104,7 @@ class TalepKartiState extends State<TalepKarti> {
       }
       islemler.add(atayadaiptalismi);
       islemler.add("Cevap Ekle");
-    }
-    else{
+    } else {
       Mesajlar().tamam(context, Text(sn.sonuc), Text("Uyarı"));
     }
     setState(() {});
@@ -115,8 +115,8 @@ class TalepKartiState extends State<TalepKarti> {
     parametreler.add(JsonEncoder().convert(MyApp.oturum));
     parametreler.add(txtIlgili.text);
 
-    DefaultReturn sn = await BasariUtilities()
-        .getApiSonuc(parametreler, MyApp.apiUrl + "apitumtalepler/IlgiliAra");
+    DefaultReturn sn = await BasariUtilities().getApiSonuc(
+        parametreler, MyApp.apiUrl + "apitumtalepler/IlgiliAra", context);
     if (!sn.basarili) {
       Mesajlar().tamam(
           context,
@@ -181,7 +181,8 @@ class TalepKartiState extends State<TalepKarti> {
       parametreler.add(txtMusteriAdi.text);
     }
 
-    DefaultReturn sn = await BasariUtilities().getApiSonuc(parametreler, url);
+    DefaultReturn sn =
+        await BasariUtilities().getApiSonuc(parametreler, url, context);
     if (!sn.basarili) {
       Mesajlar().tamam(
           context,
@@ -234,8 +235,8 @@ class TalepKartiState extends State<TalepKarti> {
       "musteriunvani": txtMusteriAdi.text
     };
     parametreler.add(jsonEncode(prm));
-    DefaultReturn sn = await BasariUtilities().getApiSonuc(
-        parametreler, MyApp.apiUrl + "apitumtalepler/MusteriKodBilgileri");
+    DefaultReturn sn = await BasariUtilities().getApiSonuc(parametreler,
+        MyApp.apiUrl + "apitumtalepler/MusteriKodBilgileri", context);
     if (sn.basarili) {
       var gelen = json.decode(sn.sonuc);
       txtMusteriKodu.text = gelen["musterikodu"];
@@ -250,8 +251,8 @@ class TalepKartiState extends State<TalepKarti> {
     parametreler.add(JsonEncoder().convert(MyApp.oturum));
     parametreler.add(txtMusteriKodu.text);
 
-    DefaultReturn sn = await BasariUtilities()
-        .getApiSonuc(parametreler, MyApp.apiUrl + "apitumtalepler/YetkiliAra");
+    DefaultReturn sn = await BasariUtilities().getApiSonuc(
+        parametreler, MyApp.apiUrl + "apitumtalepler/YetkiliAra", context);
     if (!sn.basarili) {
       Mesajlar().tamam(
           context,
@@ -297,15 +298,14 @@ class TalepKartiState extends State<TalepKarti> {
 
   void cevapEkle() async {
     final result = await Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => TalepCevap(
+        builder: (context) => PageTalepCevap(
               talepNo: BasariUtilities().tamsayi(txttalepno.text),
               mesaj: "",
               sadeceMesaj: false,
             )));
     mesaj = result;
     if (mesaj == "Cevap Eklendi") talepDoldur();
-    if(mesaj == "Çözüldü")
-    {
+    if (mesaj == "Çözüldü") {
       Navigator.pop(context);
     }
   }
@@ -369,10 +369,12 @@ class TalepKartiState extends State<TalepKarti> {
       "Mesaj": mesaj
     };
     parametreler.add(jsonEncode(talepbilgileri));
-    DefaultReturn sn = await BasariUtilities()
-        .getApiSonuc(parametreler, MyApp.apiUrl + "apitumtalepler/TalepKaydet");
+    pr.show();
+    DefaultReturn sn = await BasariUtilities().getApiSonuc(
+        parametreler, MyApp.apiUrl + "apitumtalepler/TalepKaydet", context);
+    pr.hide();
     if (sn.basarili) {
-      Mesajlar().tamam(context, Text("Talep kaydedildi"), Text("Bilgi"));
+      Mesajlar().toastMesaj("Talep kaydedildi");
       txttalepno.text = sn.sonuc;
       talepDoldur();
     } else {
@@ -415,7 +417,8 @@ class TalepKartiState extends State<TalepKarti> {
     } else {
       url = MyApp.apiUrl + "apitumtalepler/AtamaIptal";
     }
-    DefaultReturn sn = await BasariUtilities().getApiSonuc(parametreler, url);
+    DefaultReturn sn =
+        await BasariUtilities().getApiSonuc(parametreler, url, context);
     if (sn.basarili) {
       talepDoldur();
     } else {
@@ -425,7 +428,7 @@ class TalepKartiState extends State<TalepKarti> {
 
   void mesajGoster() async {
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => TalepCevap(
+        builder: (context) => PageTalepCevap(
               talepNo: BasariUtilities().tamsayi(txttalepno.text),
               mesaj: mesaj,
               sadeceMesaj: true,
@@ -468,6 +471,13 @@ class TalepKartiState extends State<TalepKarti> {
     departmanlar.add(GenelEnum(no: 6, adi: "Satış"));
     departmanlar.add(GenelEnum(no: 7, adi: "Teklif"));
     departmanlar.add(GenelEnum(no: 8, adi: "Planlama"));
+
+    durumu = durumlar.first;
+    oncelik = oncelikler.first;
+    islemler.clear();
+    islemler.add("Yeni");
+    islemler.add("Kaydet");
+    islemler.add("Mesaj Ekle");
   }
 
   void islemYap(String islem) {
@@ -495,6 +505,16 @@ class TalepKartiState extends State<TalepKarti> {
 
   @override
   Widget build(BuildContext context) {
+    pr = ProgressDialog(
+      context,
+      type: ProgressDialogType.Normal,
+      textDirection: TextDirection.ltr,
+      isDismissible: false,
+      customBody: LinearProgressIndicator(
+        valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent),
+        backgroundColor: Colors.white,
+      ),
+    );
     return WillPopScope(
       child: Scaffold(
         appBar: AppBar(

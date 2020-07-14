@@ -47,7 +47,7 @@ class PageSayimState extends State<PageSayim> {
     parametreler.add(JsonEncoder().convert(MyApp.oturum));
 
     DefaultReturn sn = await BasariUtilities()
-        .getApiSonuc(parametreler, MyApp.apiUrl + "apisayim/DepoAra");
+        .getApiSonuc(parametreler, MyApp.apiUrl + "apisayim/DepoAra",context);
     if (!sn.basarili) {
       Mesajlar().tamam(
           context,
@@ -100,7 +100,7 @@ class PageSayimState extends State<PageSayim> {
     parametreler.add(jsonEncode(sbp));
 
     DefaultReturn sn = await BasariUtilities()
-        .getApiSonuc(parametreler, MyApp.apiUrl + "apisayim/EvrakAra");
+        .getApiSonuc(parametreler, MyApp.apiUrl + "apisayim/EvrakAra",context);
     if (!sn.basarili) {
       Mesajlar().tamam(
           context,
@@ -152,7 +152,7 @@ class PageSayimState extends State<PageSayim> {
     parametreler.add(jsonEncode(sbp));
 
     DefaultReturn sn = await BasariUtilities()
-        .getApiSonuc(parametreler, MyApp.apiUrl + "apisayim/EvrakGetir");
+        .getApiSonuc(parametreler, MyApp.apiUrl + "apisayim/EvrakGetir",context);
     if (sn.basarili) {
       var gelen = json.decode(sn.sonuc);
       dsevrak = (gelen as List).map((e) => EvrakSatir.fromJson(e)).toList();
@@ -184,7 +184,7 @@ class PageSayimState extends State<PageSayim> {
       parametreler.add(txtStokAdi.text);
     }
 
-    DefaultReturn sn = await BasariUtilities().getApiSonuc(parametreler, url);
+    DefaultReturn sn = await BasariUtilities().getApiSonuc(parametreler, url,context);
     if (!sn.basarili) {
       Mesajlar().tamam(
           context,
@@ -235,7 +235,7 @@ class PageSayimState extends State<PageSayim> {
     };
     parametreler.add(jsonEncode(sbp));
     DefaultReturn sn = await BasariUtilities()
-        .getApiSonuc(parametreler, MyApp.apiUrl + "apisayim/StokBilgileri");
+        .getApiSonuc(parametreler, MyApp.apiUrl + "apisayim/StokBilgileri",context);
     if (sn.basarili) {
       var gelen = json.decode(sn.sonuc);
       txtStokKodu.text = gelen["stokkodu"];
@@ -326,7 +326,7 @@ class PageSayimState extends State<PageSayim> {
     parametreler.add(jsonEncode(ekleparams));
 
     DefaultReturn sn = await BasariUtilities()
-        .getApiSonuc(parametreler, MyApp.apiUrl + "apisayim/Ekle");
+        .getApiSonuc(parametreler, MyApp.apiUrl + "apisayim/Ekle",context);
     if (sn.basarili) {
       var gelen = json.decode(sn.sonuc);
       clcEvrakSira.text = gelen["evraksira"].toString();
@@ -356,7 +356,7 @@ class PageSayimState extends State<PageSayim> {
     parametreler.add(JsonEncoder().convert(MyApp.oturum));
 
     DefaultReturn sn = await BasariUtilities()
-        .getApiSonuc(parametreler, MyApp.apiUrl + "apisayim/FormLoad");
+        .getApiSonuc(parametreler, MyApp.apiUrl + "apisayim/FormLoad",context);
     if (sn.basarili) {
       var gelen = json.decode(sn.sonuc);
       List<Parametre> params = (gelen["listparams"] as List)
@@ -396,7 +396,7 @@ class PageSayimState extends State<PageSayim> {
     parametreler.add(jsonEncode(es.kayitguid));
 
     DefaultReturn sn = await BasariUtilities()
-        .getApiSonuc(parametreler, MyApp.apiUrl + "apisayim/SatirSil");
+        .getApiSonuc(parametreler, MyApp.apiUrl + "apisayim/SatirSil",context);
     if (sn.basarili) {
       dsevrak.remove(es);
       setState(() {});

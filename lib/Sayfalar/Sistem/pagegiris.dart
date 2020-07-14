@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 import 'package:prosis_mobile/Genel/Oturum.dart';
 import 'package:prosis_mobile/Genel/basariUtilities.dart';
 import 'package:prosis_mobile/Genel/formCiftButton.dart';
@@ -28,6 +29,8 @@ class PageGirisState extends State<PageGiris> {
 
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
+  //ProgressDialog pr;
+
   giris() async {
     //api url ve api ve şifre varsa giriş yap.
     //yoksa hata ver
@@ -47,9 +50,10 @@ class PageGirisState extends State<PageGiris> {
     lg.sifre = txtSifre.text;
     List<String> parametreler = new List<String>();
     parametreler.add(JsonEncoder().convert(lg));
-
+    // pr.show();
+    // pr.update(message: "Giriş yapılıyor");
     DefaultReturn sn = await BasariUtilities()
-        .getApiSonuc(parametreler, MyApp.apiUrl + "apisistem/Giris");
+        .getApiSonuc(parametreler, MyApp.apiUrl + "apisistem/Giris",context);
     if (sn.basarili) {
       MyApp.oturum = OturumBilgileri.fromJson(json.decode(sn.sonuc));
 
@@ -58,8 +62,10 @@ class PageGirisState extends State<PageGiris> {
         prefs.setString("Sirket", txtSirket.text);
         prefs.setString("Kullanici", txtKullanici.text);
         prefs.setString("Sifre", txtSifre.text);
+        //pr.hide();
       }
     } else {
+      //pr.hide();
       Mesajlar().tamam(
           context,
           Text(
@@ -69,7 +75,7 @@ class PageGirisState extends State<PageGiris> {
           Text("Hata"));
       return;
     }
-
+    
     Navigator.pushNamedAndRemoveUntil(context, '/anamenu', (_) => false);
   }
 
@@ -149,6 +155,19 @@ class PageGirisState extends State<PageGiris> {
   /////////////////////TASARIM///////////////////////////
   @override
   Widget build(BuildContext context) {
+    // pr = ProgressDialog(
+    //   context,
+    //   type: ProgressDialogType.Normal,
+    //   textDirection: TextDirection.ltr,
+    //   isDismissible: false,
+      
+    //  customBody: LinearProgressIndicator(
+    //    valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent),
+    //    backgroundColor: Colors.white,
+    //  ),
+    // );
+  
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Giriş"),

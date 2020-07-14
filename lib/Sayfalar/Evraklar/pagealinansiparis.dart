@@ -121,7 +121,7 @@ class PageAlinanSiparisState extends State<PageAlinanSiparis> {
     parametreler.add(JsonEncoder().convert(MyApp.oturum));
 
     DefaultReturn sn = await BasariUtilities()
-        .getApiSonuc(parametreler, MyApp.apiUrl + "apialinansiparis/FormLoad");
+        .getApiSonuc(parametreler, MyApp.apiUrl + "apialinansiparis/FormLoad",context);
     if (sn.basarili) {
       var gelen = json.decode(sn.sonuc);
       List<Parametre> params = (gelen["listparams"] as List)
@@ -289,7 +289,7 @@ class PageAlinanSiparisState extends State<PageAlinanSiparis> {
       parametreler.add(txtCariUnvan.text);
     }
 
-    DefaultReturn sn = await BasariUtilities().getApiSonuc(parametreler, url);
+    DefaultReturn sn = await BasariUtilities().getApiSonuc(parametreler, url,context);
     if (!sn.basarili) {
       Mesajlar().tamam(
           context,
@@ -339,7 +339,7 @@ class PageAlinanSiparisState extends State<PageAlinanSiparis> {
     parametreler.add(JsonEncoder().convert(MyApp.oturum));
     parametreler.add(txtCariKod.text);
     DefaultReturn sn = await BasariUtilities().getApiSonuc(
-        parametreler, MyApp.apiUrl + "apialinansiparis/CariBilgileri");
+        parametreler, MyApp.apiUrl + "apialinansiparis/CariBilgileri",context);
     if (sn.basarili) {
       var gelen = json.decode(sn.sonuc);
       txtCariUnvan.text = gelen["cari_unvan1"];
@@ -362,7 +362,7 @@ class PageAlinanSiparisState extends State<PageAlinanSiparis> {
     parametreler.add(JsonEncoder().convert(MyApp.oturum));
 
     DefaultReturn sn = await BasariUtilities().getApiSonuc(
-        parametreler, MyApp.apiUrl + "apialinansiparis/OdemePlaniAra");
+        parametreler, MyApp.apiUrl + "apialinansiparis/OdemePlaniAra",context);
     if (!sn.basarili) {
       Mesajlar().tamam(
           context,
@@ -410,7 +410,7 @@ class PageAlinanSiparisState extends State<PageAlinanSiparis> {
     parametreler.add(JsonEncoder().convert(MyApp.oturum));
 
     DefaultReturn sn = await BasariUtilities()
-        .getApiSonuc(parametreler, MyApp.apiUrl + "apialinansiparis/DepoAra");
+        .getApiSonuc(parametreler, MyApp.apiUrl + "apialinansiparis/DepoAra",context);
     if (!sn.basarili) {
       Mesajlar().tamam(
           context,
@@ -457,7 +457,7 @@ class PageAlinanSiparisState extends State<PageAlinanSiparis> {
     parametreler.add(JsonEncoder().convert(MyApp.oturum));
 
     DefaultReturn sn = await BasariUtilities().getApiSonuc(
-        parametreler, MyApp.apiUrl + "apialinansiparis/PlasiyerAra");
+        parametreler, MyApp.apiUrl + "apialinansiparis/PlasiyerAra",context);
     if (!sn.basarili) {
       Mesajlar().tamam(
           context,
@@ -504,7 +504,7 @@ class PageAlinanSiparisState extends State<PageAlinanSiparis> {
     parametreler.add(JsonEncoder().convert(MyApp.oturum));
 
     DefaultReturn sn = await BasariUtilities()
-        .getApiSonuc(parametreler, MyApp.apiUrl + "apialinansiparis/ProjeAra");
+        .getApiSonuc(parametreler, MyApp.apiUrl + "apialinansiparis/ProjeAra",context);
     if (!sn.basarili) {
       Mesajlar().tamam(
           context,
@@ -551,7 +551,7 @@ class PageAlinanSiparisState extends State<PageAlinanSiparis> {
     parametreler.add(JsonEncoder().convert(MyApp.oturum));
 
     DefaultReturn sn = await BasariUtilities()
-        .getApiSonuc(parametreler, MyApp.apiUrl + "apialinansiparis/SrmMrkAra");
+        .getApiSonuc(parametreler, MyApp.apiUrl + "apialinansiparis/SrmMrkAra",context);
     if (!sn.basarili) {
       Mesajlar().tamam(
           context,
@@ -614,7 +614,7 @@ class PageAlinanSiparisState extends State<PageAlinanSiparis> {
       parametreler.add(txtStokAdi.text);
     }
 
-    DefaultReturn sn = await BasariUtilities().getApiSonuc(parametreler, url);
+    DefaultReturn sn = await BasariUtilities().getApiSonuc(parametreler, url,context);
     if (!sn.basarili) {
       Mesajlar().tamam(
           context,
@@ -667,7 +667,7 @@ class PageAlinanSiparisState extends State<PageAlinanSiparis> {
     };
     parametreler.add(jsonEncode(sbp));
     DefaultReturn sn = await BasariUtilities().getApiSonuc(
-        parametreler, MyApp.apiUrl + "apialinansiparis/StokBilgileri");
+        parametreler, MyApp.apiUrl + "apialinansiparis/StokBilgileri",context);
     if (sn.basarili) {
       var gelen = json.decode(sn.sonuc);
       txtStokKodu.text = gelen["stokkodu"];
@@ -789,7 +789,7 @@ class PageAlinanSiparisState extends State<PageAlinanSiparis> {
     parametreler.add(jsonEncode(ekleparams));
 
     DefaultReturn sn = await BasariUtilities()
-        .getApiSonuc(parametreler, MyApp.apiUrl + "apialinansiparis/Ekle");
+        .getApiSonuc(parametreler, MyApp.apiUrl + "apialinansiparis/Ekle",context);
     if (sn.basarili) {
       var gelen = json.decode(sn.sonuc);
       dsevrak = (gelen["eklenenler"] as List)
@@ -917,7 +917,7 @@ class PageAlinanSiparisState extends State<PageAlinanSiparis> {
     parametreler.add(jsonEncode(kaydetparams));
 
     DefaultReturn sn = await BasariUtilities()
-        .getApiSonuc(parametreler, MyApp.apiUrl + "apialinansiparis/Kaydet");
+        .getApiSonuc(parametreler, MyApp.apiUrl + "apialinansiparis/Kaydet",context);
     if (sn.basarili) {
       var gelen = json.decode(sn.sonuc);
       Mesajlar().tamam(

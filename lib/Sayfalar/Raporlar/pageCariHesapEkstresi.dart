@@ -50,7 +50,7 @@ class PageCariHesapEkstresiState extends State<PageCariHesapEkstresi> {
       parametreler.add(txtCariUnvan.text);
     }
 
-    DefaultReturn sn = await BasariUtilities().getApiSonuc(parametreler, url);
+    DefaultReturn sn = await BasariUtilities().getApiSonuc(parametreler, url,context);
     if (!sn.basarili) {
       Mesajlar().tamam(
           context,
@@ -101,7 +101,7 @@ class PageCariHesapEkstresiState extends State<PageCariHesapEkstresi> {
     parametreler.add(JsonEncoder().convert(MyApp.oturum));
     parametreler.add(txtCariKod.text);
     DefaultReturn sn = await BasariUtilities().getApiSonuc(
-        parametreler, MyApp.apiUrl + "apicarihesapekstresi/CariBilgileri");
+        parametreler, MyApp.apiUrl + "apicarihesapekstresi/CariBilgileri",context);
     if (sn.basarili) {
       var gelen = json.decode(sn.sonuc);
       txtCariUnvan.text = gelen["cari_unvan1"];
@@ -119,7 +119,7 @@ class PageCariHesapEkstresiState extends State<PageCariHesapEkstresi> {
     };
     parametreler.add(jsonEncode(raporparams));
     DefaultReturn sn = await BasariUtilities().getApiSonuc(
-        parametreler, MyApp.apiUrl + "apicarihesapekstresi/RaporAl");
+        parametreler, MyApp.apiUrl + "apicarihesapekstresi/RaporAl",context);
     if (sn.basarili) {
       var gelen = json.decode(sn.sonuc);
       //List<dynamic> gelen2 = gelen[0];

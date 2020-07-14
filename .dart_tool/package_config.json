@@ -218,12 +218,6 @@
       "languageVersion": "2.6"
     },
     {
-      "name": "load",
-      "rootUri": "file:///E:/flutter/.pub-cache/hosted/pub.dartlang.org/load-0.1.6",
-      "packageUri": "lib/",
-      "languageVersion": "2.1"
-    },
-    {
       "name": "logging",
       "rootUri": "file:///E:/flutter/.pub-cache/hosted/pub.dartlang.org/logging-0.11.4",
       "packageUri": "lib/",
@@ -318,6 +312,12 @@
       "rootUri": "file:///E:/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-1.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.1"
+    },
+    {
+      "name": "progress_dialog",
+      "rootUri": "file:///E:/flutter/.pub-cache/hosted/pub.dartlang.org/progress_dialog-1.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
     },
     {
       "name": "protobuf",
@@ -482,7 +482,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-07-10T22:37:32.627496Z",
+  "generated": "2020-07-13T14:36:09.898046Z",
   "generator": "pub",
   "generatorVersion": "2.8.4"
 }
