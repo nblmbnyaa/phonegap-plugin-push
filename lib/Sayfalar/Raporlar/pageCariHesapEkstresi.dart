@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:prosis_mobile/Genel/basariUtilities.dart';
 import 'package:prosis_mobile/Genel/formTekButton.dart';
 import 'package:prosis_mobile/Genel/formtarih.dart';
@@ -152,6 +153,21 @@ class PageCariHesapEkstresiState extends State<PageCariHesapEkstresi> {
   void initState() {
     onLoad();
     super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+  ]);
+  }
+
+    @override
+  void dispose() {
+    SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeRight,
+    DeviceOrientation.landscapeLeft,
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+    super.dispose();
   }
 
   @override

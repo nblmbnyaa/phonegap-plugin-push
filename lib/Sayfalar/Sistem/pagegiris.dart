@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:progress_dialog/progress_dialog.dart';
 import 'package:prosis_mobile/Genel/Oturum.dart';
 import 'package:prosis_mobile/Genel/basariUtilities.dart';
 import 'package:prosis_mobile/Genel/formCiftButton.dart';
@@ -124,6 +123,7 @@ class PageGirisState extends State<PageGiris> {
     _firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) async {
         print("onMessage: $message");
+        //Mesajlar().tamam(context, Text("$message"), Text("Bildirim"));
       },
       onLaunch: (Map<String, dynamic> message) async {
         print("onLaunch: $message");

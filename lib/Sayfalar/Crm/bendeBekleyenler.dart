@@ -19,7 +19,7 @@ class PageCrmBendeBekleyenlerState extends State<PageCrmBendeBekleyenler> {
   ProgressDialog pr;
   List<dynamic> dataList = [];
 
-  void yenile() async {
+  Future<void> yenile() async {
     pr.show();
     List<String> parametreler = new List<String>();
     parametreler.add(JsonEncoder().convert(MyApp.oturum));
@@ -29,8 +29,13 @@ class PageCrmBendeBekleyenlerState extends State<PageCrmBendeBekleyenler> {
       var gelen = json.decode(sn.sonuc);
       dataList = gelen;
     }
-    pr.hide();
-    setState(() {});
+    setState(() {
+      Future.delayed(Duration(seconds: 1)).then((value) {
+        pr.hide().whenComplete(() {
+         // print(pr.isShowing());
+        });
+      });
+    });
   }
 
   void talebegit(int talepno) async {
@@ -43,6 +48,17 @@ class PageCrmBendeBekleyenlerState extends State<PageCrmBendeBekleyenler> {
 
   @override
   void initState() {
+    if (pr == null)
+      pr = ProgressDialog(
+        context,
+        type: ProgressDialogType.Normal,
+        textDirection: TextDirection.ltr,
+        isDismissible: false,
+        customBody: LinearProgressIndicator(
+          valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent),
+          backgroundColor: Colors.white,
+        ),
+      );
     yenile();
     super.initState();
   }

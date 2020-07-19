@@ -38,6 +38,7 @@ dependencies:
   firebase_messaging: ^6.0.16
   html_editor: ^1.0.1
   progress_dialog: ^1.2.4
+  maps_launcher: ^1.2.1
 
 dev_dependencies:
   flutter_test:

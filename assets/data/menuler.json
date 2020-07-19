@@ -122,7 +122,7 @@
     
     {
         "menuno": 132001,
-        "viewname": "vwmusterikarti",
+        "viewname": "/132001",
         "baslik": "Müşteri Kartı",
         "paneladi": "crm",
         "ozelmenu": true
@@ -150,12 +150,18 @@
     },
     {
         "menuno": 132010,
-        "viewname": "vwCrmZiyaretPlanlarim",
+        "viewname": "/132010",
         "baslik": "Ziyaret Planlarım",
         "paneladi": "crm",
         "ozelmenu": true
     },
-
+    {
+        "menuno": 132011,
+        "viewname": "/132011",
+        "baslik": "Planlama",
+        "paneladi": "crm",
+        "ozelmenu": true
+    },
 
     
     {

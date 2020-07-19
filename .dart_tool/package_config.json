@@ -224,6 +224,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "maps_launcher",
+      "rootUri": "file:///E:/flutter/.pub-cache/hosted/pub.dartlang.org/maps_launcher-1.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "matcher",
       "rootUri": "file:///E:/flutter/.pub-cache/hosted/pub.dartlang.org/matcher-0.12.6",
       "packageUri": "lib/",
@@ -482,7 +488,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-07-13T14:36:09.898046Z",
+  "generated": "2020-07-14T09:14:48.275699Z",
   "generator": "pub",
   "generatorVersion": "2.8.4"
 }

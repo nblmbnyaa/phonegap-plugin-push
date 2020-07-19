@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:progress_dialog/progress_dialog.dart';
 import 'package:prosis_mobile/Sayfalar/Crm/baskasindaBekleyenler.dart';
 import 'package:prosis_mobile/Sayfalar/Crm/bendeBekleyenler.dart';
+import 'package:prosis_mobile/Sayfalar/Crm/musterikarti.dart';
+import 'package:prosis_mobile/Sayfalar/Crm/planlama.dart';
 import 'package:prosis_mobile/Sayfalar/Crm/talepkarti.dart';
+import 'package:prosis_mobile/Sayfalar/Crm/ziyaretPlanlarim.dart';
 import 'package:prosis_mobile/Sayfalar/Evraklar/pagealinansiparis.dart';
 import 'package:prosis_mobile/Sayfalar/Raporlar/pageCariHesapEkstresi.dart';
 import 'package:prosis_mobile/Sayfalar/Sistem/pagealtmenu.dart';
@@ -46,8 +48,11 @@ void main() {
       "/132002": (context) => PageTalepKarti(
             talepNo: 0,
           ),
+      "/132001": (context) => PageCrmMusteriKarti(),
       "/132006": (context) => PageCrmBaskasindaBekleyenler(),
       "/132007": (context) => PageCrmBendeBekleyenler(),
+      "/132010": (context) => PageCrmZiyaretPlanlarim(),
+      "/132011": (context) => PageCrmPlanlama(),
     },
     //           locale: const Locale('de'), // change to locale you want. not all locales are supported
     // localizationsDelegates: [
@@ -62,5 +67,4 @@ class MyApp {
   static String apiUrl = "";
   static String apiSifre = "";
   static OturumBilgileri oturum = OturumBilgileri();
-  
 }

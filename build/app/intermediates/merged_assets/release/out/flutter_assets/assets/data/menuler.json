@@ -29,14 +29,14 @@
     },
     {
         "menuno": 201005,
-        "viewname": "vwcarihesapekstresi",
+        "viewname": "/201005",
         "baslik": "Cari Hesap Ekstresi",
         "paneladi": "genelraporlar",
         "ozelmenu": false
     },
     {
         "menuno": 201006,
-        "viewname": "vwsayim1",
+        "viewname": "/201006",
         "baslik": "Sayım Sonuçları Girişi",
         "paneladi": "evraklar",
         "ozelmenu": false
@@ -129,35 +129,28 @@
     },
     {
         "menuno": 132002,
-        "viewname": "vwtalepkarti",
+        "viewname": "/132002",
         "baslik": "Talep Kartı",
         "paneladi": "crm",
         "ozelmenu": true
     },
     {
-        "menuno": 132005,
-        "viewname": "vwhizlitalepkarti",
-        "baslik": "Hızlı Talep Kartı",
-        "paneladi": "crm",
-        "ozelmenu": true
-    },
-    {
         "menuno": 132006,
-        "viewname": "vwtumbekleyenler",
+        "viewname": "/132006",
         "baslik": "Başkasında Bekleyenler",
         "paneladi": "crm",
         "ozelmenu": true
     },
     {
         "menuno": 132007,
-        "viewname": "vwbendebekleyenler",
+        "viewname": "/132007",
         "baslik": "Bende Bekleyenler",
         "paneladi": "crm",
         "ozelmenu": true
     },
     {
         "menuno": 132010,
-        "viewname": "vwCrmZiyaretPlanlarim",
+        "viewname": "/132010",
         "baslik": "Ziyaret Planlarım",
         "paneladi": "crm",
         "ozelmenu": true

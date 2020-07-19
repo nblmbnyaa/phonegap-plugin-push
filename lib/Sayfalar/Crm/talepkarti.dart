@@ -97,7 +97,7 @@ class PageTalepKartiState extends State<PageTalepKarti> {
       islemler.clear();
       islemler.add("Yeni");
       islemler.add("Kaydet");
-      if (txtSahibi.text == MyApp.oturum.kullanicikodu) {
+      if (gelen["Sahipno"] == MyApp.oturum.userid) {
         atayadaiptalismi = "Atama İptal";
       } else {
         atayadaiptalismi = "Bana Ata";
@@ -372,7 +372,13 @@ class PageTalepKartiState extends State<PageTalepKarti> {
     pr.show();
     DefaultReturn sn = await BasariUtilities().getApiSonuc(
         parametreler, MyApp.apiUrl + "apitumtalepler/TalepKaydet", context);
-    pr.hide();
+    setState(() {
+      Future.delayed(Duration(seconds: 1)).then((value) {
+        pr.hide().whenComplete(() {
+          print(pr.isShowing());
+        });
+      });
+    });
     if (sn.basarili) {
       Mesajlar().toastMesaj("Talep kaydedildi");
       txttalepno.text = sn.sonuc;

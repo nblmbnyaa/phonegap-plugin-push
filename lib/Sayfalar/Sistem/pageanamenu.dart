@@ -68,9 +68,10 @@ class PageAnaMenuState extends State<PageAnaMenu> {
   @override
   void initState() {
     super.initState();
-
     onload();
   }
+
+
 
   //////////////////////TASARIM/////////////////
   @override
@@ -153,11 +154,11 @@ class PageAnaMenuState extends State<PageAnaMenu> {
                       alignment: Alignment.bottomCenter,
                       child: Column(
                         children: <Widget>[
-                          // Image(
-                          //     image: AssetImage(ustmenudekiler[index].resim),
-                          //     fit: BoxFit.cover),
+                           Image(
+                               image: AssetImage(ustmenudekiler[index].resim),
+                               fit: BoxFit.cover),
 
-                          Icon(icongetir(ustmenudekiler[index].baslik),size: 70,),
+                          //Icon(icongetir(ustmenudekiler[index].baslik),size: 70,),
                           Transform(
                             alignment: Alignment.bottomCenter,
                             transform: Matrix4.skewY(0.0)..rotateZ(0.0),

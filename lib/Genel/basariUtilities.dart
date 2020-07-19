@@ -98,6 +98,14 @@ class BasariUtilities {
     }
   }
 
+  DateTime getdate(var nesne) {
+    try {
+      return DateTime.parse(nesne);
+    } catch (e) {
+      return DateTime(1899, 12, 30);
+    }
+  }
+
   int tamsayi(var nesne) {
     try {
       return int.parse(nesne);
