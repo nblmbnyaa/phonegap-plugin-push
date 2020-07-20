@@ -974,7 +974,7 @@ class PageCikisIrsaliyesiState extends State<PageCikisIrsaliyesi> {
           length: 6,
           child: Scaffold(
             appBar: AppBar(
-              title: Text("Alınan Sipariş"),
+              title: Text("Çıkış İrsaliyesi"),
               bottom: TabBar(
                 tabs: [
                   Tab(text: "Cari"),

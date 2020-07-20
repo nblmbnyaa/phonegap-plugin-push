@@ -70,6 +70,13 @@
         "ozelmenu": false
     },
     {
+        "menuno": 201011,
+        "viewname": "/201011",
+        "baslik": "Giriş İrsaliyesi",
+        "paneladi": "evraklar",
+        "ozelmenu": false
+    },
+    {
         "menuno": 202001,
         "viewname": "vwKasaRaporlariOzetRapor",
         "baslik": "Özet Raporu",
