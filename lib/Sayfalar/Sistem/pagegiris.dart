@@ -52,7 +52,7 @@ class PageGirisState extends State<PageGiris> {
     // pr.show();
     // pr.update(message: "Giriş yapılıyor");
     DefaultReturn sn = await BasariUtilities()
-        .getApiSonuc(parametreler, MyApp.apiUrl + "apisistem/Giris",context);
+        .getApiSonuc(parametreler, MyApp.apiUrl + "apisistem/Giris", context);
     if (sn.basarili) {
       MyApp.oturum = OturumBilgileri.fromJson(json.decode(sn.sonuc));
 
@@ -74,7 +74,7 @@ class PageGirisState extends State<PageGiris> {
           Text("Hata"));
       return;
     }
-    
+
     Navigator.pushNamedAndRemoveUntil(context, '/anamenu', (_) => false);
   }
 
@@ -123,13 +123,15 @@ class PageGirisState extends State<PageGiris> {
     _firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) async {
         print("onMessage: $message");
-        //Mesajlar().tamam(context, Text("$message"), Text("Bildirim"));
+        Mesajlar().tamam(context, Text("$message"), Text("Bildirim mes"));
       },
       onLaunch: (Map<String, dynamic> message) async {
         print("onLaunch: $message");
+        Mesajlar().tamam(context, Text("$message"), Text("Bildirim lau"));
       },
       onResume: (Map<String, dynamic> message) async {
         print("onResume: $message");
+        Mesajlar().tamam(context, Text("$message"), Text("Bildirim res"));
       },
     );
     _firebaseMessaging.requestNotificationPermissions(
@@ -160,13 +162,12 @@ class PageGirisState extends State<PageGiris> {
     //   type: ProgressDialogType.Normal,
     //   textDirection: TextDirection.ltr,
     //   isDismissible: false,
-      
+
     //  customBody: LinearProgressIndicator(
     //    valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent),
     //    backgroundColor: Colors.white,
     //  ),
     // );
-  
 
     return Scaffold(
       appBar: AppBar(
