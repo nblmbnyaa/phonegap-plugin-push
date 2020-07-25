@@ -48,6 +48,7 @@ class PageCrmMusteriKartiState extends State<PageCrmMusteriKarti> {
   DateTime eDefterTarihi;
   TextEditingController dtMikroArsivTarihi = TextEditingController();
   DateTime mikroArsivTarihi;
+  TextEditingController txtMikroArsivi = TextEditingController();
   TextEditingController dtAsistanBitisTarihi = TextEditingController();
   DateTime asistanBitisTarihi;
   TextEditingController txtBilgisayarSayisi = TextEditingController();
@@ -212,6 +213,7 @@ class PageCrmMusteriKartiState extends State<PageCrmMusteriKarti> {
             intl.DateFormat("dd.MM.yyyy").format(mikroArsivTarihi);
       else
         dtMikroArsivTarihi.text = "";
+      txtMikroArsivi.text = gelen["MikroArsivi"];
       asistanBitisTarihi = DateTime.parse(gelen["AsistanBitisTarihi"]);
       if (asistanBitisTarihi == DateTime(1899, 12, 30))
         asistanBitisTarihi = null;
@@ -859,6 +861,7 @@ class PageCrmMusteriKartiState extends State<PageCrmMusteriKarti> {
     dtMikroArsivTarihi.text = "";
     asistanBitisTarihi = null;
     dtMikroArsivTarihi.text = "";
+    txtMikroArsivi.text = "";
     mikroVersiyon = null;
     mikroProgram = null;
     mikroMusterisi = null;
@@ -911,11 +914,12 @@ class PageCrmMusteriKartiState extends State<PageCrmMusteriKarti> {
       "txtCepTel": txtCepTelefonu.text,
       "txtSabitTel": txtSabitTel.text,
       "dteArsivTarih":
-          BasariUtilities().getdate(eArsivTarihi).toIso8601String(),
+          BasariUtilities().getdate(dtMikroArsivTarihi).toIso8601String(),
       "dteAsistanBitisTarih":
           BasariUtilities().getdate(asistanBitisTarihi).toIso8601String(),
       "cbxMikroVersiyon": mikroVersiyon == null ? -1 : mikroVersiyon.no,
       "cbxMikroProgram": mikroProgram == null ? -1 : mikroProgram.adi,
+      "MikroArsivi": txtMikroArsivi.text,
       "cbxMikroMus": mikroMusterisi == null ? -1 : mikroMusterisi.no,
       "cbxYazarkasaMus":
           yazarkasaMusterisi == null ? -1 : yazarkasaMusterisi.no,
@@ -1013,7 +1017,6 @@ class PageCrmMusteriKartiState extends State<PageCrmMusteriKarti> {
     );
     onLoad();
     super.initState();
-    
   }
 
   @override
@@ -1230,6 +1233,12 @@ class PageCrmMusteriKartiState extends State<PageCrmMusteriKarti> {
                               mikroArsivTarihi = vl;
                             });
                           },
+                        ),
+                        FormTextAramasiz(
+                          isPassword: false,
+                          labelicerik: "Mikro Arşivi",
+                          readonly: false,
+                          txtkod: txtMikroArsivi,
                         ),
                         FormTarih(
                           dttarih: dtAsistanBitisTarihi,

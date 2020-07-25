@@ -77,6 +77,13 @@
         "ozelmenu": false
     },
     {
+        "menuno": 201012,
+        "viewname": "/201012",
+        "baslik": "Depolar Arası Sevk",
+        "paneladi": "evraklar",
+        "ozelmenu": false
+    },
+    {
         "menuno": 202001,
         "viewname": "vwKasaRaporlariOzetRapor",
         "baslik": "Özet Raporu",
