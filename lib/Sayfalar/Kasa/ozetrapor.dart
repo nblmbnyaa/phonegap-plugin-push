@@ -18,8 +18,6 @@ class PageKasaOzetRapor extends StatefulWidget {
 }
 
 class PageKasaOzetRaporState extends State<PageKasaOzetRapor> {
-  TextEditingController txtCariKod = TextEditingController();
-  TextEditingController txtCariUnvan = TextEditingController();
   TextEditingController dtIlkTarih = TextEditingController();
   DateTime ilkTarih =
       DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);

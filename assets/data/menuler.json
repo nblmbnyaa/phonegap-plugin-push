@@ -92,42 +92,42 @@
     },
     {
         "menuno": 202002,
-        "viewname": "vwKasaRaporlariStokDetayliRapor",
+        "viewname": "/202002",
         "baslik": "Stok Detaylı Rapor",
         "paneladi": "kasa",
         "ozelmenu": false
     },
     {
         "menuno": 202003,
-        "viewname": "vwKasaRaporlariCariDetayliRapor",
+        "viewname": "/202003",
         "baslik": "Cari Detaylı Rapor",
         "paneladi": "kasa",
         "ozelmenu": false
     },
     {
         "menuno": 202004,
-        "viewname": "vwKasaRaporlarStokveCariDetayliRapor",
+        "viewname": "/202004",
         "baslik": "Stok ve Cari Detaylı Rapor",
         "paneladi": "kasa",
         "ozelmenu": false
     },
     {
         "menuno": 202005,
-        "viewname": "vwKasaRaporlariFiyatDegisikligiRaporu",
+        "viewname": "/202005",
         "baslik": "Fiyat Değişikliği Raporu",
         "paneladi": "kasa",
         "ozelmenu": false
     },
     {
         "menuno": 202006,
-        "viewname": "vwKasaRaporlariBekleyenUrunler",
+        "viewname": "/202006",
         "baslik": "Bekleyen Ürünler",
         "paneladi": "kasa",
         "ozelmenu": false
     },
     {
         "menuno": 202007,
-        "viewname": "vwKasayaVeriGonder",
+        "viewname": "/202007",
         "baslik": "Kasaya Veri Gönder",
         "paneladi": "kasa",
         "ozelmenu": false
