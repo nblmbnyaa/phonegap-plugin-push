@@ -1405,6 +1405,7 @@ class EvrakSatir {
       this.nettutar,
       this.vergiorani,
       this.siprecno,
+      this.sipguid,
       this.guid});
 
   factory EvrakSatir.fromJson(Map<String, dynamic> json) {
@@ -1423,6 +1424,7 @@ class EvrakSatir {
       nettutar: json["nettutar"],
       vergiorani: json["vergiorani"],
       siprecno: json["siprecno"],
+      sipguid: json["sipguid"],
       guid: json["guid"],
     );
   }
@@ -1442,6 +1444,7 @@ class EvrakSatir {
         'nettutar': nettutar,
         'vergiorani': vergiorani,
         'siprecno': siprecno,
+        'sipguid':sipguid,
         'guid': guid,
       };
 }

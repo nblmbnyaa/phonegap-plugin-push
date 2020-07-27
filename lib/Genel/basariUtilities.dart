@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:progress_dialog/progress_dialog.dart';
+import 'package:intl/intl.dart' as intl;
 
 class BasariUtilities {
   ProgressDialog pr;
@@ -104,6 +105,15 @@ class BasariUtilities {
     } catch (e) {
       return DateTime(1899, 12, 30);
     }
+  }
+
+  String getStringDate(Object nesne) {
+    String sonuc = "";
+    try {
+      sonuc = intl.DateFormat("dd.MM.yyyy").format(nesne);
+    } catch (e) {}
+    if (sonuc == "30.12.1899") sonuc = "";
+    return sonuc;
   }
 
   int tamsayi(var nesne) {

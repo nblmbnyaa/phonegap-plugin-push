@@ -9,6 +9,7 @@ import 'package:prosis_mobile/Sayfalar/Evraklar/pagealinansiparis.dart';
 import 'package:prosis_mobile/Sayfalar/Evraklar/pagecikisirsaliyesi.dart';
 import 'package:prosis_mobile/Sayfalar/Evraklar/pagedepolararasisevk.dart';
 import 'package:prosis_mobile/Sayfalar/Evraklar/pagegirisirsaliyesi.dart';
+import 'package:prosis_mobile/Sayfalar/Kasa/ozetrapor.dart';
 import 'package:prosis_mobile/Sayfalar/Raporlar/pageCariHesapEkstresi.dart';
 import 'package:prosis_mobile/Sayfalar/Sistem/pagealtmenu.dart';
 import 'package:prosis_mobile/Sayfalar/Sistem/pageanamenu.dart';
@@ -59,6 +60,7 @@ void main() {
       "/201009": (context) => PageCikisIrsaliyesi(),
       "/201011": (context) => PageGirisIrsaliyesi(),
       "/201012": (context) => PageDepolarArasiSevk(),
+      "/202001": (context) => PageKasaOzetRapor(),
     },
     //           locale: const Locale('de'), // change to locale you want. not all locales are supported
     // localizationsDelegates: [

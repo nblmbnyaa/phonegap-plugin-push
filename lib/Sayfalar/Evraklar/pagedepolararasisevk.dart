@@ -671,7 +671,7 @@ class PageDepolarArasiSevkState extends State<PageDepolarArasiSevk> {
     return WillPopScope(
         child: DefaultTabController(
           initialIndex: selectedTab,
-          length: 6,
+          length: 5,
           child: Scaffold(
             appBar: AppBar(
               title: Text("Giriş İrsaliyesi"),
@@ -725,8 +725,7 @@ class PageDepolarArasiSevkState extends State<PageDepolarArasiSevk> {
                         FormTextAramali(
                           readOnly: true,
                           labelicerik: "Kaynak Depo",
-                          onPressedAra: ()
-                          {
+                          onPressedAra: () {
                             depoAra(false);
                           },
                           txtkod: txtKaynakDepo,
@@ -735,8 +734,7 @@ class PageDepolarArasiSevkState extends State<PageDepolarArasiSevk> {
                         FormTextAramali(
                           readOnly: true,
                           labelicerik: "Hedef Depo",
-                         onPressedAra: ()
-                          {
+                          onPressedAra: () {
                             depoAra(true);
                           },
                           txtkod: txtHedefDepo,
@@ -802,81 +800,94 @@ class PageDepolarArasiSevkState extends State<PageDepolarArasiSevk> {
                   ),
                 ),
                 /////////////////////////////EVRAK//////////////////////////
-                Column(
-                  children: <Widget>[
-                    FormTekButton(
-                      icerik: "Kaydet",
-                      islem: kaydet,
-                      renk: Colors.green[600],
-                    ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.vertical,
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: DataTable(
-                            columnSpacing: 10,
-                            dataRowHeight: 40,
-                            showCheckboxColumn: false,
-                            columns: <DataColumn>[
-                              DataColumn(label: Text("Stok")),
-                              DataColumn(label: Text("Miktar")),
-                              DataColumn(label: Text("Sil")),
-                            ],
-                            rows: dsevrak
-                                .map((e) => DataRow(cells: [
-                                      DataCell(
-                                        Container(
-                                          width: 150,
-                                          child: SingleChildScrollView(
-                                              scrollDirection: Axis.vertical,
-                                              child: Column(
-                                                children: <Widget>[
-                                                  Text(e.stokkodu),
-                                                  Text(e.stokadi),
-                                                ],
-                                              )),
-                                        ),
-                                      ),
-                                      DataCell(
-                                          Text("${e.miktar} ${e.birimadi}")),
-                                      DataCell(RaisedButton(
-                                          child: Text("Satır Sil"),
-                                          onPressed: () {
-                                            Future<bool> cevap = Mesajlar().yesno(
-                                                context,
-                                                Text(
-                                                    "Seçili satırı silmek istediğinizden emin misiniz?"),
-                                                Text("Uyarı"),
-                                                "Sil",
-                                                "Vazgeç");
-                                            cevap.then((value) {
-                                              if (value) {
-                                                if (e.siprecno > 0 ||
-                                                    e.sipguid !=
-                                                        "00000000-0000-0000-0000-000000000000") {
-                                                  var ss = dsSiparisler
-                                                      .where((element) =>
-                                                          element["siprecno"] ==
-                                                              e.siprecno ||
-                                                          element["sipguid"] ==
-                                                              e.sipguid)
-                                                      .first;
-                                                  ss["okunan"] =
-                                                      ss["okunan"] - e.miktar;
-                                                  ss["kalan"] =
-                                                      ss["kalan"] + e.miktar;
-                                                }
-                                                dsevrak.remove(e);
-                                                setState(() {});
-                                              }
-                                            });
-                                          }))
-                                    ]))
-                                .toList()),
+                SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      FormTekButton(
+                        icerik: "Kaydet",
+                        islem: kaydet,
+                        renk: Colors.green[600],
                       ),
-                    ),
-                  ],
+                      DataTable(
+                          columnSpacing: 10,
+                          dataRowHeight: 40,
+                          showCheckboxColumn: false,
+                          columns: <DataColumn>[
+                            DataColumn(label: Text("Stok")),
+                            DataColumn(label: Text("Miktar")),
+                            DataColumn(label: Text("Sil")),
+                          ],
+                          rows: dsevrak
+                              .map((e) => DataRow(cells: [
+                                    DataCell(
+                                      Container(
+                                        width: 150,
+                                        child: SingleChildScrollView(
+                                            scrollDirection: Axis.vertical,
+                                            child: Column(
+                                              children: <Widget>[
+                                                Text(e.stokkodu),
+                                                Text(e.stokadi),
+                                              ],
+                                            )),
+                                      ),
+                                    ),
+                                    DataCell(Text("${e.miktar} ${e.birimadi}")),
+                                    DataCell(RaisedButton(
+                                        child: Text("Satır Sil"),
+                                        onPressed: () {
+                                          Future<bool> cevap = Mesajlar().yesno(
+                                              context,
+                                              Text(
+                                                  "Seçili satırı silmek istediğinizden emin misiniz?"),
+                                              Text("Uyarı"),
+                                              "Sil",
+                                              "Vazgeç");
+                                          cevap.then((value) {
+                                            if (value) {
+                                              if (e.siprecno > 0 ||
+                                                  e.sipguid !=
+                                                      "00000000-0000-0000-0000-000000000000") {
+                                                var ss = dsSiparisler
+                                                    .where((element) =>
+                                                        element["siprecno"] ==
+                                                            e.siprecno ||
+                                                        element["sipguid"] ==
+                                                            e.sipguid)
+                                                    .first;
+                                                ss["okunan"] =
+                                                    ss["okunan"] - e.miktar;
+                                                ss["kalan"] =
+                                                    ss["kalan"] + e.miktar;
+                                              }
+                                              dsevrak.remove(e);
+                                              setState(() {});
+                                            }
+                                          });
+                                        }))
+                                  ]))
+                              .toList()),
+                    ],
+                  ),
                 ),
+
+                // Column(
+                //   children: <Widget>[
+                //     FormTekButton(
+                //       icerik: "Kaydet",
+                //       islem: kaydet,
+                //       renk: Colors.green[600],
+                //     ),
+                //     SingleChildScrollView(
+                //       scrollDirection: Axis.vertical,
+                //       child: SingleChildScrollView(
+                //         scrollDirection: Axis.horizontal,
+                //         child:
+                //       ),
+                //     ),
+                //   ],
+                // ),
 
                 /////////////////////////////Siparişler//////////////////////////
                 SingleChildScrollView(
@@ -974,7 +985,6 @@ class PageDepolarArasiSevkState extends State<PageDepolarArasiSevk> {
                     ],
                   ),
                 ),
-                
               ],
             ),
           ),
@@ -1004,6 +1014,7 @@ class EvrakSatir {
       this.miktar,
       this.birimadi,
       this.siprecno,
+      this.sipguid,
       this.guid});
 
   factory EvrakSatir.fromJson(Map<String, dynamic> json) {
@@ -1016,6 +1027,7 @@ class EvrakSatir {
       miktar: json["miktar"],
       birimadi: json["birimadi"],
       siprecno: json["siprecno"],
+      sipguid: json["sipguid"],
       guid: json["guid"],
     );
   }

@@ -319,6 +319,6 @@ class PageCariHesapEkstresiState extends State<PageCariHesapEkstresi> {
             ],
           )),
         ),
-        onWillPop: backPressed);
+        onWillPop: () => Mesajlar().backPressed(context));
   }
 }
